@@ -14,7 +14,7 @@ function initMap() {
         center: {lat: 33.748995, lng: -84.387982}
     });
     var geocoder = new google.maps.Geocoder();
-    
+
     document.getElementById('submit').addEventListener('click', function() {
         geocodeAddress(geocoder, map);
     });
@@ -34,3 +34,22 @@ function geocodeAddress(geocoder, resultsMap) {
         }
     });
 }
+$(document).ready(function(){
+    // Init Carousel
+    $('.carousel').carousel();
+
+    // Init Carousel Slider
+    $('.carousel.carousel-slider').carousel({fullWidth:true});
+
+    // Fire off toast
+    //Materialize.toast('Hello World', 3000);
+
+    // Init Slider
+    $('.slider').slider();
+
+    // Init Modal
+    $('.modal').modal();
+
+    // Init Sidenav
+    $('.button-collapse').sideNav();
+});
