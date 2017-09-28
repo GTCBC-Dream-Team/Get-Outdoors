@@ -11,21 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript for materialize-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <!--jquery cdn-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <script src="assets/js/app.js"></script>
 
 </head>
 <body>
-
     <nav>
-        <div class="nav-wrapper">
-            <a class="brand-logo">SOMETHING</a>
+        <div class="nav-wrapper amber darken-3">
+            <a class="brand-logo">GO OUTDOORS!<i class="material-icons" style="margin-left: 4px; font-size:50px;">terrain</i></a>
+
         </div>
     </nav>
 
@@ -46,10 +45,37 @@
         <!--contains slideshow for weather and daylight hours-->
         <div class="row">
             <!--weather slideshow-->
-            <div class="col s12 m6 l6 xl6 center-align">WEATHER: slideshow</div>
-            <!--daylight slideshow-->
-            <div class="col s12 m6 l6 xl6 center-align">SUNLIGHT: slideshow</div>
+
+            <div class="col s12 m6 l6 xl6 center-align">
+                <div class="slider">
+                    <ul class="slides">
+                        <li>
+                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
+                            <div class="caption center-align">
+                                <h3>Get Outdoors</h3>
+                                <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="http://lorempixel.com/580/250/nature/2" alt="">
+                            <div class="caption left-align">
+                                <h3>This is our tagline</h3>
+                                <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="http://lorempixel.com/580/250/nature/3" alt="">
+                            <div class="caption right-align">
+                                <h3>This is our tagline</h3>
+                                <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        </div>
+
 
         <!--dropdown menu for activity selection-->
         <div class="row">
@@ -63,7 +89,7 @@
             </form>
         </div>
 
-        <div class="row center-align">
+        <div id="map" class="row center-align">
             <h1>MAP</h1>
         </div>
 
