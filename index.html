@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>Go Outdoors - Your planning guide to adventure</title>
 
     <link rel="stylesheet" href="assets/css/reset.css">
 
@@ -22,7 +22,7 @@
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper amber darken-3">
+        <div class="nav-wrapper brown darken-2">
             <a class="brand-logo">GO OUTDOORS!<i class="material-icons" style="margin-left: 4px; font-size:50px;">terrain</i></a>
 
         </div>
@@ -31,7 +31,19 @@
     <main>
 
         <!--the user input for location-->
-        <div class="row">
+            <nav class=" #afb42b lime darken-4">
+                <div class="nav-wrapper #c0ca33 lime darken-2 container">
+                    <!-- Links hidden on medium and small screen device -->
+                    <div class="input-field">
+                        <input id="search" type="search" required="">
+                        <label class="label-icon" for="search"><i class="material-icons ">search</i></label>
+
+                        <i class="material-icons">close</i>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="row">
             <form>
                 <div class="row">
                     <div class="input-field">
@@ -89,16 +101,38 @@
             </form>
         </div>
 
-        <div id="map" class="row center-align">
-            <h1>MAP</h1>
-        </div>
+        <!--<div class="container">-->
+        <!--<div id="map" class="row center-align">-->
+            <!--<h1>MAP</h1>-->
+        <!--</div>-->
+        <!--</div>-->
 
+
+
+    <!-- CAROUSEL FULL SLIDER -->
+        <h1>MAPS</h1>
+    <div id="map" class="carousel carousel-slider row center-align">
+
+        <a href="#one!" class="carousel-item">
+            <img src="http://lorempixel.com/800/400/nature/1" alt="">
+        </a>
+        <a href="#two!" class="carousel-item">
+            <img src="http://lorempixel.com/800/400/sports/1" alt="">
+        </a>
+        <a href="#three!" class="carousel-item">
+            <img src="http://lorempixel.com/800/400/food/1" alt="">
+        </a>
+        <a href="#four!" class="carousel-item">
+            <img src="http://lorempixel.com/800/400/animals/1" alt="">
+        </a>
+        <a href="#five!" class="carousel-item">
+            <img src="http://lorempixel.com/800/400/cats/1" alt="">
+        </a>
+    </div>
         <div class="row">Contains additional information</div>
     </main>
 
-
-
-    <footer class="page-footer center-align">
+    <footer class="page-footer center-align brown darken-2">
         Footer
     </footer>
 

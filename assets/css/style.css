@@ -1,4 +1,17 @@
 /*sticky footer stuff*/
+html{
+    background-image: url(../../terrain 2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*no-repeat: center center fixed*/
+    /*color: #8b442b;*/
+    /*text-shadow:*/
+            /*-1px -1px 0 #8b6e47,*/
+            /*1px -1px #8b6e47,*/
+            /*-1px 1px 0 #8b6e47,*/
+            /*1px 1px 0 #8b6e47;*/
+
+
 body {
     display: flex;
     min-height: 100vh;
@@ -7,4 +20,8 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+h1 {
+    text-align: center;
 }
