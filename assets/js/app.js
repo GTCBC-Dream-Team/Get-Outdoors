@@ -53,3 +53,20 @@ $(document).ready(function(){
     // Init Sidenav
     $('.button-collapse').sideNav();
 });
+
+const key = "AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI";
+
+
+
+$("#submit").on("click", function() {
+    let address = $("#address").val();
+    const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log(response.results[0].geometry.location.lat);
+        console.log(response.results[0].geometry.location.lng);
+    })
+});
+
