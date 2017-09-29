@@ -1,6 +1,6 @@
 
 $.ajax({
-    url:"https://www.metaweather.com/api/location/search/?lattlong=36.96,-122.02",
+    url:"https://gtproxy2.herokuapp.com/api/metaweather/location/search/?query=san",
     method: "GET"
 }).done(function(response){
     console.log(response);
