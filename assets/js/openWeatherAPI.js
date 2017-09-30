@@ -1,7 +1,7 @@
 //initializing variables
 var APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
-var lat = "37.39";
-var lon = "-122.09";
+var lat = 33.7401600;
+var lon = -84.4203400;
 var currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + APIkey;
 var futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&APPID=" + APIkey;
 
@@ -20,14 +20,14 @@ $.ajax({
 
     //shows current temperature
     var tempKelvin = response.main.temp;
-    var tempFahrenheit = (tempKelvin - 273.15)*1.8000;
+    var tempFahrenheit = (tempKelvin *9/5) - 459.67;
     tempFahrenheit = Number(Math.round(tempFahrenheit+'e1')+'e-1');
     console.log("current temperature: " + tempFahrenheit + "F");
     $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
 
     //shows today's min temperature
     var minKelvin = response.main.temp_min;
-    var minFahrenheit = (minKelvin - 273.15)*1.8000;
+    var minFahrenheit = (minKelvin *9/5) - 459.67;
     minFahrenheit = Number(Math.round(minFahrenheit+'e1')+'e-1');
     console.log("min temperature: " + minFahrenheit + "F");
     $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");

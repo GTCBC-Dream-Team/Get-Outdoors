@@ -10,6 +10,9 @@ $.ajax({
      method: "GET"
 }).done(function(response){
     console.log(response);
+
+    $("#currentSunsetHead").append("Today's Sun Data");
+
     var currentSunrise = response.results.sunrise;
     console.log("Sunrise: " + currentSunrise);
 
