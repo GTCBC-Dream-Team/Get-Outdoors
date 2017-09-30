@@ -23,6 +23,8 @@ $("#submit").on("click", function() {
 });
 
 
+//use callbacks
+
 //nearby search request
 
 // let map;
