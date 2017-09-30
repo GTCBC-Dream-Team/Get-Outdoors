@@ -11,19 +11,22 @@ $.ajax({
 }).done(function(response){
     console.log(response);
 
-    $("#currentSunsetHead").append("Today's Sun Data");
+    $("#currentSunsetHead").html("Today's Sun Data");
 
     var currentSunrise = response.results.sunrise;
     console.log("Sunrise: " + currentSunrise);
+    $("#currentSunsetBody").append("Sunrise: " + currentSunrise + "<br>");
 
-    var currentSunset = response.sunset;
+    var currentSunset = response.results.sunset;
     console.log("Sunset: " + currentSunset);
+    $("#currentSunsetBody").append("Sunset: " + currentSunset + "<br>");
 
     var currentNoon = response.results.solar_noon;
     console.log("Solar noon: " + currentNoon);
 
     var currentDaylength = response.results.day_length;
     console.log("Day length: " + currentDaylength);
+    $("#currentSunsetBody").append("Day length: " + currentDaylength + "<br>");
 
     var nextDay = currentTime.day(0);
     console.log("Next Day: " + nextDay.format("dddd"));
