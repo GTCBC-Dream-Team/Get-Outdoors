@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Go Outdoors - Your planning guide to adventure</title>
+    <title>Get Outdoors - Your planning guide to adventure</title>
 
     <link rel="stylesheet" href="assets/css/reset.css">
 
@@ -32,12 +32,12 @@
 </head>
 <body>
 <!--the user input for location-->
-<nav class=" #afb42b lime darken-4">
+<nav class="lime darken-4">
     <div class="nav-wrapper #c0ca33 lime darken-2 container">
         <!-- Links hidden on medium and small screen device -->
         <div class="input-field">
             <input id="search" type="search" required="">
-            <label class="label-icon" for="search"><i class="material-icons ">search</i></label>
+            <label class="label-icon" for="search"><i class="material-icons ">language</i></label>
 
             <i class="material-icons">close</i>
         </div>
@@ -46,101 +46,135 @@
 
 <nav>
     <div class="nav-wrapper brown darken-2"<span>
-    <a class="brand-logo">GO OUTDOORS!<i class="material-icons" style="margin-left: 4px; font-size:50px;">terrain</i></a></span>
+      <!--<a href="#" class="brand-logo right">Logo</a>-->
+    <a class="brand-logo left">GET OUTDOORS!<i class="material-icons" style="margin-left: 4px; font-size:35px;">terrain</i></a></span>
 
     </div>
 </nav>
 
 <main>
    <br/>
+
     <!--contains slideshow for weather and daylight hours-->
     <div class="row">
-        <!--weather slideshow-->
-
-        <div class="col s12 m6 l6 xl6 center-align">
+        <div class="col s12 12 m12 l12 center-align">
             <div class="slider">
                 <ul class="slides">
                     <li>
+                        <div id="left-side" class="col s6">
                         <img src="http://lorempixel.com/580/250/nature/1" alt="">
-                        <div class="caption center-align">
-                            <h3>Get Outdoors</h3>
-                            <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="http://lorempixel.com/580/250/nature/2" alt="">
                         <div class="caption left-align">
-                            <h3>This is our tagline</h3>
-                            <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
+                            <h3>Left</h3>
+                            <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                        </div>
+                        </div>
+                        <div id="right-side" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/2">
+                            <div class="caption right-align">
+                                <h3>Right</h3>
+                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+                            </div>
                         </div>
                     </li>
+
+
+
                     <li>
-                        <img src="http://lorempixel.com/580/250/nature/3" alt="">
-                        <div class="caption right-align">
-                            <h3>This is our tagline</h3>
-                            <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
+                        <div id="left-side2" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
+                            <div class="caption left-align">
+                                <h3>Left</h3>
+                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                            </div>
+                        </div>
+                        <div id="right-side2" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/2">
+                            <div class="caption right-align">
+                                <h3>Right</h3>
+                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+                            </div>
                         </div>
                     </li>
+
+                    <li>
+                        <div id="left-side3" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
+                            <div class="caption left-align">
+                                <h3>Left</h3>
+                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                            </div>
+                        </div>
+                        <div id="right-side3" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/2">
+                            <div class="caption right-align">
+                                <h3>Right</h3>
+                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+                            </div>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
 
             </form>
         </div>
 
-<!--but side content here-->
-        <section id="compass body" class="right">
-            <div id="compass">
-                <span>N</span>
-                <span>E</span>
-                <span>S</span>
-                <span>W</span>
-                <div id="pointer"></div>
-            </div>
-    </section>
-    </div>
+<!--Compass-->
+        <!--<div class="col s3 m5 l4 right-align"></div>-->
+        <!--<section id="compass body" class="right">-->
+            <!--<div id="compass">-->
+                <!--<span>N</span>-->
+                <!--<span>E</span>-->
+                <!--<span>S</span>-->
+                <!--<span>W</span>-->
+                <!--<div id="pointer"></div>-->
+            <!--</div>-->
+    <!--</section>-->
+    <!--</div>-->
 
 
     <!--dropdown menu for activity selection-->
+    <!--<div class="row">-->
+        <!--<form>-->
+            <!--<div class="row">-->
+                <!--<div class="input-field">-->
+                    <!--<textarea id="textarea2" class="materialize-textarea"></textarea>-->
+                    <!--<label for="textarea2">Activities (will eventually be a dropdown)</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+
     <div class="row">
-        <form>
-            <div class="row">
-                <div class="input-field">
-                    <textarea id="textarea2" class="materialize-textarea"></textarea>
-                    <label for="textarea2">Activities (will eventually be a dropdown)</label>
-                </div>
-            </div>
-        </form>
+        <div class="col l12"><img class="responsive-img img cover" src="spot.jpg"></div>
     </div>
 
 
-
-
-    <!-- CAROUSEL FULL SLIDER -->
-    <h1>MAPS</h1>
-    <div id="map" class="carousel carousel-slider row center-align">
-
-        <a href="#one!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/nature/1" alt="">
-        </a>
-        <a href="#two!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/sports/1" alt="">
-        </a>
-        <a href="#three!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/food/1" alt="">
-        </a>
-        <a href="#four!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/animals/1" alt="">
-        </a>
-        <a href="#five!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/cats/1" alt="">
-        </a>
-    </div>
     <div class="row">Contains additional information</div>
 </main>
-
-<footer class="page-footer center-align brown darken-2">
-    Footer
+<footer class="page-footer brown darken-1">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">SUN DIAL TUTORIAL</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">NIGHT DIAL TUTORIAL</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright Get Outdoors
+        </div>
+    </div>
 </footer>
-
 </body>
 </html>
