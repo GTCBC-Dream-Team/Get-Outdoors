@@ -38,12 +38,6 @@ $.ajax({
     maxFahrenheit = Number(Math.round(maxFahrenheit+'e1')+'e-1');
     console.log("max temperature: " + maxFahrenheit + "F");
     $("#currentWeatherBody").append("Max: " + maxFahrenheit + "<br>");
-
-    //shows today's sunrise time
-
-    //show today's sunset time
-
-    //show today's day length
 });
 
 //call to weather API future weather forecast
