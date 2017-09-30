@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Go Outdoors - Your planning guide to adventure</title>
-
-    <!--jquery CDN-->
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-
-
+    <title>Get Outdoors - Your planning guide to adventure</title>
 
     <link rel="stylesheet" href="assets/css/reset.css">
 
     <!-- Compiled and minified CSS for materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript for materialize-->
-    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
-    
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
     <!--Materialize JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!--Material Icons-->
@@ -33,12 +27,8 @@
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <!--- google maps callback-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>
-<!--Team JS-->
 
-    <!--Weather API-->
-    <script src="assets/js/weatherAPI.js"></script>
-    
-    
+    <!--google.maps.Geocoder-->
 
 </head>
 <body>
@@ -48,16 +38,16 @@
 <!--</form>-->
 
 <!--the user input for location-->
-<nav class=" #afb42b lime darken-4">
+<nav class="lime darken-4">
     <div class="nav-wrapper #c0ca33 lime darken-2 container">
         <!-- Links hidden on medium and small screen device -->
         <div class="input-field">
             <form>
-            <input id="search" type="search" required="">
-            <label class="label-icon" for="search">
-                <button id="submit"><i class="material-icons ">search</i></button>
-            </label>
-            <i class="material-icons">close</i>
+                <input id="search" type="search" required="">
+                <label class="label-icon" for="search">
+                    <button id="submit"><i class="material-icons ">search</i></button>
+                </label>
+                <i class="material-icons">close</i>
             </form>
         </div>
     </div>
@@ -85,18 +75,20 @@
                         <div id="left-side" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/1" alt="">
                             <div class="caption left-align">
-                                <h3>Left</h3>
-                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                                <h3 id="currentWeatherHead">Left</h3>
+                                <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm on the left</h5>
                             </div>
                         </div>
                         <div id="right-side" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
-                                <h3>Right</h3>
-                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+                                <h3 id="currentSunsetHead">Right</h3>
+                                <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on the right!</h5>
                             </div>
                         </div>
                     </li>
+
+
                     <li>
                         <div id="left-side2" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/1" alt="">
@@ -133,7 +125,6 @@
 
                 </ul>
             </div>
-        </div>
 
         </div>
 
@@ -168,28 +159,28 @@
         <div class="row">Contains additional information</div>
 
 
-    <!-- CAROUSEL FULL SLIDER -->
-    <h1>MAPS</h1>
-    <div id="map"></div>
-    <!--<div id="map" class="carousel carousel-slider row center-align">-->
+        <!-- CAROUSEL FULL SLIDER -->
+        <h1>MAPS</h1>
+        <div id="map" class="responsive-img"></div>
+        <!--<div id="map" class="carousel carousel-slider row center-align">-->
 
         <!--<a href="#one!" class="carousel-item">-->
-            <!--<img src="http://lorempixel.com/800/400/nature/1" alt="">-->
+        <!--<img src="http://lorempixel.com/800/400/nature/1" alt="">-->
         <!--</a>-->
         <!--<a href="#two!" class="carousel-item">-->
-            <!--<img src="http://lorempixel.com/800/400/sports/1" alt="">-->
+        <!--<img src="http://lorempixel.com/800/400/sports/1" alt="">-->
         <!--</a>-->
         <!--<a href="#three!" class="carousel-item">-->
-            <!--<img src="http://lorempixel.com/800/400/food/1" alt="">-->
+        <!--<img src="http://lorempixel.com/800/400/food/1" alt="">-->
         <!--</a>-->
         <!--<a href="#four!" class="carousel-item">-->
-            <!--<img src="http://lorempixel.com/800/400/animals/1" alt="">-->
+        <!--<img src="http://lorempixel.com/800/400/animals/1" alt="">-->
         <!--</a>-->
         <!--<a href="#five!" class="carousel-item">-->
-            <!--<img src="http://lorempixel.com/800/400/cats/1" alt="">-->
+        <!--<img src="http://lorempixel.com/800/400/cats/1" alt="">-->
         <!--</a>-->
-    <!--</div>-->
-    <!--<div class="row">Contains additional information</div>-->
+        <!--</div>-->
+        <!--<div class="row">Contains additional information</div>-->
 </main>
 
 <footer class="page-footer brown darken-1">
@@ -213,10 +204,11 @@
     </footer>
 
 
-<script src="assets/js/app.js"></script>
-<script src="assets/js/openWeatherAPI.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap">
-</script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/openWeatherAPI.js"></script>
+    <script src="assets/js/sunsetAPI.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap">
+    </script>
 </body>
 </html>
