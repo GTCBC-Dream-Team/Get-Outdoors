@@ -31,7 +31,7 @@ $.ajax({
     console.log("max temperature: " + maxFahrenheit + "F");
 });
 
-//call to weather API future weather forecase
+//call to weather API future weather forecast
 $.ajax({
     url: futureWeatherURL,
     method: "GET"
