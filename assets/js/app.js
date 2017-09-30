@@ -6,34 +6,6 @@
 
 //pass lat and long variable into google maps
 
-// 'http://maps.googleapis.com/maps/api/geocode/json'
-
-// function initMap() {
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 8,
-//         center: {lat: 33.748995, lng: -84.387982}
-//     });
-//     var geocoder = new google.maps.Geocoder();
-//
-//     document.getElementById('submit').addEventListener('click', function() {
-//         geocodeAddress(geocoder, map);
-//     });
-// }
-//
-// function geocodeAddress(geocoder, resultsMap) {
-//     var address = document.getElementById('address').value;
-//     geocoder.geocode({'address': address}, function(results, status) {
-//         if (status === 'OK') {
-//             resultsMap.setCenter(results[0].geometry.location);
-//             var marker = new google.maps.Marker({
-//                 map: resultsMap,
-//                 position: results[0].geometry.location
-//             });
-//         } else {
-//             alert('Geocode was not successful for the following reason: ' + status);
-//         }
-//     });
-// }
 $(document).ready(function(){
     // Init Carousel
     $('.carousel').carousel();
@@ -56,6 +28,10 @@ $(document).ready(function(){
 
 const key = "AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI";
 
+function myhelper(lat, lng) {
+
+}
+
 $("#submit").on("click", function() {
     event.preventDefault();
     let address = $("#search").val();
@@ -66,48 +42,71 @@ $("#submit").on("click", function() {
     }).done(function (response) {
         console.log(response.results[0].geometry.location.lat);
         console.log(response.results[0].geometry.location.lng);
+        let lat = response.results[0].geometry.location.lat;
+        let lng =response.results[0].geometry.location.lng;
+        myhelper(lat, lng);
+        initMap(lat, lng);
     })
 });
 
-let map;
-function initMap() {
+// $("#submit2").on("click", function() {
+//     event.preventDefault();
+//   let activity = $("#textarea2").val().trim();
+//    console.log(activity);
+// });
+
+var map;
+var service;
+var infowindow;
+
+function initMap(lat, lng) {
+    var location = new google.maps.LatLng(lat,lng);
+
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 33.7489954, lng: -84.3879824},
-        zoom: 10
+        center: location,
+        zoom: 15
+    });
+
+    var request = {
+        location: location,
+        radius: '50000',
+        query: 'restaurant'
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+}
+
+function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            createMarker(results[i]);
+        }
+    }
+}
+
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+    
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
     });
 }
+// function hey(name) {
+//     return function () {
+//         console.log('Hey', name);
+//     }
+// }
+//
+// const showHey = hey('Gene');
+// showHey();
 
 //use callbacks
 
 //nearby search request
-
-// let map;
-// let service;
-// let infowindow;
-//
-// function initialize() {
-//     var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-//
-//     map = new google.maps.Map(document.getElementById('map'), {
-//         center: pyrmont,
-//         zoom: 15
-//     });
-//
-//     var request = {
-//         location: pyrmont,
-//         radius: '500',
-//         type: ['restaurant']
-//     };
-//
-//     service = new google.maps.places.PlacesService(map);
-//     service.nearbySearch(request, callback);
-// }
-//
-// function callback(results, status) {
-//     if (status == google.maps.places.PlacesServiceStatus.OK) {
-//         for (var i = 0; i < results.length; i++) {
-//             var place = results[i];
-//             createMarker(results[i]);
-//         }
-//     }
-// }

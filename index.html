@@ -25,18 +25,18 @@
 
     <!--Moment JS-->
     <script src="https://momentjs.com/downloads/moment.js"></script>
-
-
-    <!--Weather API-->
-    <script src="assets/js/openWeatherAPI.js"></script>
-
-    <!--Sunset API-->
-    <script src="assets/js/sunsetAPI.js"></script>
+    <!--- google maps callback-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>
 
     <!--google.maps.Geocoder-->
 
 </head>
 <body>
+<!--<form>-->
+<!--<input id="address" type="text">-->
+<!--<button id="submit">submit</button>-->
+<!--</form>-->
+
 <!--the user input for location-->
 <nav class="lime darken-4">
     <div class="nav-wrapper #c0ca33 lime darken-2 container">
@@ -54,7 +54,7 @@
 </nav>
 
 <nav>
-    <div class="nav-wrapper brown darken-2"
+    <div class="nav-wrapper brown darken-2">
     <span>
       <!--<a href="#" class="brand-logo right">Logo</a>-->
     <a class="brand-logo left">GET OUTDOORS!<i class="material-icons"
@@ -64,7 +64,7 @@
 </nav>
 
 <main>
-    <br/>
+    <br>
 
     <!--contains slideshow for weather and daylight hours-->
     <div class="row">
@@ -126,7 +126,6 @@
                 </ul>
             </div>
 
-            </form>
         </div>
 
         <!--Compass-->
@@ -143,10 +142,18 @@
         <!--</div>-->
 
 
-        <!--dropdown menu for activity selection-->
-        <div class="row">
-            <!--<div class="col l12"><img class="responsive-img img cover" src="spot.jpg"></div>-->
-        </div>
+    <!--dropdown menu for activity selection-->
+    <div class="row">
+        <form>
+            <div class="row">
+                <div class="input-field">
+                    <input id="textarea2" type="text" class="materialize-textarea">
+                    <button id="submit2">submit</button>
+                    <label for="textarea2">Activities (will eventually be a dropdown)</label>
+                </div>
+            </div>
+        </form>
+    </div>
 
 
         <div class="row">Contains additional information</div>
@@ -198,6 +205,8 @@
 
 
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/openWeatherAPI.js"></script>
+    <script src="assets/js/sunsetAPI.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap">
     </script>
