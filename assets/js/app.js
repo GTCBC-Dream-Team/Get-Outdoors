@@ -54,7 +54,26 @@ $(document).ready(function(){
     $('.button-collapse').sideNav();
 });
 
+
+// const mapURL = `https://maps.googleapis.com/maps/api/place/textsearch/output?key=${key}&location=${lat},${lng}&radius=500&keyword=${activity}
+// `;
+
+// let map;
+// function initMap() {
+//     map = new google.maps.Map(document.getElementById('map'), {
+//         center: {lat: 33.7489954, lng: -84.3879824},
+//         zoom: 10
+//     });
+// }
+
+
 const key = "AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI";
+let lat;
+let lng;
+
+function myhelper(lat, lng) {
+
+}
 
 $("#submit").on("click", function() {
     event.preventDefault();
@@ -66,48 +85,60 @@ $("#submit").on("click", function() {
     }).done(function (response) {
         console.log(response.results[0].geometry.location.lat);
         console.log(response.results[0].geometry.location.lng);
+        lat = response.results[0].geometry.location.lat;
+        lng =response.results[0].geometry.location.lng;
+        myhelper(lat, lng);
+        initMap(lat, lng);
     })
 });
 
-let map;
-function initMap() {
+// $("#submit2").on("click", function() {
+//     event.preventDefault();
+//   let activity = $("#textarea2").val().trim();
+//    console.log(activity);
+// });
+
+var map;
+var service;
+var infowindow;
+
+function initMap(lat, lng) {
+    var location = new google.maps.LatLng(lat,lng);
+
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 33.7489954, lng: -84.3879824},
-        zoom: 10
+        center: location,
+        zoom: 15
     });
+
+    var request = {
+        location: location,
+        radius: '500',
+        query: 'restaurant'
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
 }
+
+function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            createMarker(results[i]);
+        }
+    }
+}
+
+
+// function hey(name) {
+//     return function () {
+//         console.log('Hey', name);
+//     }
+// }
+//
+// const showHey = hey('Gene');
+// showHey();
 
 //use callbacks
 
 //nearby search request
-
-// let map;
-// let service;
-// let infowindow;
-//
-// function initialize() {
-//     var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-//
-//     map = new google.maps.Map(document.getElementById('map'), {
-//         center: pyrmont,
-//         zoom: 15
-//     });
-//
-//     var request = {
-//         location: pyrmont,
-//         radius: '500',
-//         type: ['restaurant']
-//     };
-//
-//     service = new google.maps.places.PlacesService(map);
-//     service.nearbySearch(request, callback);
-// }
-//
-// function callback(results, status) {
-//     if (status == google.maps.places.PlacesServiceStatus.OK) {
-//         for (var i = 0; i < results.length; i++) {
-//             var place = results[i];
-//             createMarker(results[i]);
-//         }
-//     }
-// }
