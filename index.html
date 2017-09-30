@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
 
+    <!--jquery CDN-->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
     <title>Go Outdoors - Your planning guide to adventure</title>
 
     <link rel="stylesheet" href="assets/css/reset.css">
@@ -11,7 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript for materialize-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+
     <!--Materialize JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!--Material Icons-->
@@ -25,7 +32,7 @@
     
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>-->
 <!--Team JS-->
-    <script src="assets/js/app.js"></script>
+
     <!--Weather API-->
     <!--<script src="assets/js/weatherAPI.js"></script>-->
     <script src="assets/js/openWeatherAPI.js"></script>
@@ -40,16 +47,19 @@
     <div class="nav-wrapper #c0ca33 lime darken-2 container">
         <!-- Links hidden on medium and small screen device -->
         <div class="input-field">
+            <form>
             <input id="search" type="search" required="">
-            <label class="label-icon" for="search"><i class="material-icons ">search</i></label>
-
+            <label class="label-icon" for="search">
+                <button id="submit"><i class="material-icons ">search</i></button>
+            </label>
             <i class="material-icons">close</i>
+            </form>
         </div>
     </div>
 </nav>
 
 <nav>
-    <div class="nav-wrapper brown darken-2"<span>
+    <div class="nav-wrapper brown darken-2"><span>
     <a class="brand-logo">GO OUTDOORS!<i class="material-icons" style="margin-left: 4px; font-size:50px;">terrain</i></a></span>
 
     </div>
@@ -67,14 +77,8 @@
                     <li>
                         <img src="http://lorempixel.com/580/250/nature/1" alt="">
                         <div class="caption center-align">
-                            <div class="col s6 m6 l6 xl6">
-                                <h3>Get Outdoors</h3>
-                                <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
-                            </div>
-                            <div class="col s6 m6 l6 xl6">
-                                <h3>Get Outdoors</h3>
-                                <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
-                            </div>
+                            <h3>Get Outdoors</h3>
+                            <h5 class="light grey-text text-lighten-3">Here is our slogan</h5>
                         </div>
                     </li>
                     <li>
@@ -127,30 +131,36 @@
 
     <!-- CAROUSEL FULL SLIDER -->
     <h1>MAPS</h1>
-    <div id="map" class="carousel carousel-slider row center-align">
+    <div id="map"></div>
+    <!--<div id="map" class="carousel carousel-slider row center-align">-->
 
-        <a href="#one!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/nature/1" alt="">
-        </a>
-        <a href="#two!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/sports/1" alt="">
-        </a>
-        <a href="#three!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/food/1" alt="">
-        </a>
-        <a href="#four!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/animals/1" alt="">
-        </a>
-        <a href="#five!" class="carousel-item">
-            <img src="http://lorempixel.com/800/400/cats/1" alt="">
-        </a>
-    </div>
-    <div class="row">Contains additional information</div>
+        <!--<a href="#one!" class="carousel-item">-->
+            <!--<img src="http://lorempixel.com/800/400/nature/1" alt="">-->
+        <!--</a>-->
+        <!--<a href="#two!" class="carousel-item">-->
+            <!--<img src="http://lorempixel.com/800/400/sports/1" alt="">-->
+        <!--</a>-->
+        <!--<a href="#three!" class="carousel-item">-->
+            <!--<img src="http://lorempixel.com/800/400/food/1" alt="">-->
+        <!--</a>-->
+        <!--<a href="#four!" class="carousel-item">-->
+            <!--<img src="http://lorempixel.com/800/400/animals/1" alt="">-->
+        <!--</a>-->
+        <!--<a href="#five!" class="carousel-item">-->
+            <!--<img src="http://lorempixel.com/800/400/cats/1" alt="">-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="row">Contains additional information</div>-->
 </main>
 
 <footer class="page-footer center-align brown darken-2">
     Footer
 </footer>
 
+
+<script src="assets/js/app.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap">
+</script>
 </body>
 </html>
