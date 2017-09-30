@@ -41,14 +41,15 @@ $("#submit").on("click", function () {
     $.ajax({
         url: queryURL,
         method: "GET",
-        success: function(response){
+        success: function(response) {
             let lat = response.results[0].geometry.location.lat;
             let lng = response.results[0].geometry.location.lng;
             const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
             const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
             $.ajax({
                 url: currentWeatherURL,
-                method: "GET"
+                method: "GET",
+                success: sunsetFunction(response)
             }).done(function(response){
                 console.log(response);
         
@@ -153,3 +154,33 @@ function createMarker(place) {
 //use callbacks
 
 //nearby search request
+
+function sunsetFunction(response) {
+        let lat = response.results[0].geometry.location.lat;
+        let lng = response.results[0].geometry.location.lng;
+        let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng;
+        let currentTime = moment();
+        $.ajax({
+            url: sunsetURL,
+            method: "GET"
+        }).done(function(response){
+            console.log(response);
+            
+            $("#currentSunsetHead").text("Today's Sun Data");
+            
+            var currentSunrise = response.results.sunrise;
+            console.log("Sunrise: " + currentSunrise);
+            
+            var currentSunset = response.sunset;
+            console.log("Sunset: " + currentSunset);
+            
+            var currentNoon = response.results.solar_noon;
+            console.log("Solar noon: " + currentNoon);
+            
+            var currentDaylength = response.results.day_length;
+            console.log("Day length: " + currentDaylength);
+            
+            var nextDay = currentTime.day(0);
+            console.log("Next Day: " + nextDay.format("dddd"));
+        });
+    }
