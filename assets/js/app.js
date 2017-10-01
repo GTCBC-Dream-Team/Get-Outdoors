@@ -158,7 +158,7 @@ function createMarker(place) {
 function sunsetFunction(response) {
         let lat = response.results[0].geometry.location.lat;
         let lng = response.results[0].geometry.location.lng;
-        let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng;
+        let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&formatted=0";
         let currentTime = moment();
         $.ajax({
             url: sunsetURL,
@@ -184,7 +184,7 @@ function sunsetFunction(response) {
             $("#currentSunsetBody").append("Solar noon: " + currentNoon + "<br>");
 
             var currentDaylength = response.results.day_length;
-            currentDaylength = moment(currentDaylength).format("hh:mm a");
+            currentDaylength = moment(currentDaylength).format("HH:mm");
             console.log("Day length: " + currentDaylength);
             $("#currentSunsetBody").append("Day length: " + currentDaylength + "<br>");
 
