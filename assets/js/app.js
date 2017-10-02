@@ -169,26 +169,26 @@ function sunsetFunction(response) {
             $("#currentSunsetHead").text("Today's Sun Data");
 
             var currentSunrise = response.results.sunrise;
-            currentSunrise = moment(currentSunrise).format("hh:mm a");
-            console.log("Sunrise: " + currentSunrise);
-            $("#currentSunsetBody").html("Sunrise: " + currentSunrise + "<br>");
+            currentSunriseFormatted = moment(currentSunrise).format("h:mm a");
+            console.log("Sunrise: " + currentSunriseFormatted);
+            $("#currentSunsetBody").html("Sunrise: " + currentSunriseFormatted + "<br>");
 
             var currentSunset = response.results.sunset;
-            currentSunset = moment(currentSunset).format("hh:mm a");
-            console.log("Sunset: " + currentSunset);
-            $("#currentSunsetBody").append("Sunset: " + currentSunset + "<br>");
+            currentSunsetFormatted = moment(currentSunset).format("h:mm a");
+            console.log("Sunset: " + currentSunsetFormatted);
+            $("#currentSunsetBody").append("Sunset: " + currentSunsetFormatted + "<br>");
 
             var currentNoon = response.results.solar_noon;
-            currentNoon = moment(currentNoon).format("hh:mm a");
-            console.log("Solar noon: " + currentNoon);
-            $("#currentSunsetBody").append("Solar noon: " + currentNoon + "<br>");
+            currentNoonFormatted = moment(currentNoon).format("h:mm a");
+            console.log("Solar noon: " + currentNoonFormatted);
+            $("#currentSunsetBody").append("Solar noon: " + currentNoonFormatted + "<br>");
 
-            var currentDaylength = response.results.day_length;
-            currentDaylength = moment(currentDaylength).format("HH:mm");
-            console.log("Day length: " + currentDaylength);
-            $("#currentSunsetBody").append("Day length: " + currentDaylength + "<br>");
+            var currentDaylength = moment(currentSunset).diff(currentSunrise, "hours");
 
-            var nextDay = currentTime.day(0);
+            console.log("Day length: " + currentDaylength + " hours");
+            $("#currentSunsetBody").append("Day length: " + currentDaylength + " hours<br>");
+
+            var nextDay = currentTime.day(1);
             console.log("Next Day: " + nextDay.format("dddd"));
         });
     }
