@@ -175,7 +175,7 @@ function sunsetFunction(response) {
 
 $(document).ready(function() {
     initMap(33.7489954,-84.3879824);
-})
+});
 
 //
 // function hey(name) {
