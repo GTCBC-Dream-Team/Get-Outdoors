@@ -86,106 +86,6 @@ $("#submit").on("click", function () {
     })
 });
 
-function futureWeather(response) {
-    let currentTime = moment();
-    let tomorrowTime = moment().add(1, "days");
-    let tomorrowTomorrowTime = moment().add(2, "days");
-
-    let APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
-    let lat = 33.7401600;
-    let lng = -84.4203400;
-    const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
-
-    let todayList = [];
-    let tomorrowList = [];
-    let tomorrowTomorrowList = [];
-
-    $.ajax({
-        url: futureWeatherURL,
-        method: "GET"
-    }).done(function (response) {
-        console.log(response);
-
-        let weatherList = response.list;
-
-        console.log(weatherList);
-
-        for (let i = 0; i < weatherList.length; i++) {
-            let weatherDay = weatherList[i].dt;
-            weatherDay = moment(weatherDay);
-            if (weatherDay === currentTime) {
-                todayList.push(weatherList[i]);
-                console.log("todayList");
-            } else if (weatherDay === tomorrowTime) {
-                tomorrowList.push(weatherList[i]);
-                console.log("tomorrowList");
-            } else if (weatherDay === tomorrowTomorrowTime) {
-                tomorrowTomorrowList.push(weatherList[i]);
-                console.log("tomorrowTomorrowList");
-            }
-            console.log("Today:" + todayList);
-            console.log("Tomorrow: " + tomorrowList);
-            console.log("Tomorrow tomorrow: " + tomorrowTomorrowList);
-        }
-    })
-}
-
-// function activity() {
-//     $("#submit2").on("click", function () {
-//         event.preventDefault();
-//         let activity = $("#textarea2").val().trim();
-//         console.log(activity);
-//     });
-// }
-
-
-let map;
-let service;
-let infowindow;
-
-function initMap(lat, lng) {
-    let location = new google.maps.LatLng(lat, lng);
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 15
-    });
-    let request = {
-        location: location,
-        radius: '5000',
-        query: 'trail'
-    };
-
-    service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback);
-}
-
-function callback(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-            let place = results[i];
-            createMarker(place);
-        }
-    }
-}
-
-function createMarker(place) {
-    let placeLoc = place.geometry.location;
-    let marker = new google.maps.Marker({
-        map: map,
-        position: place.geometry.location
-    });
-
-    google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
-    });
-}
-
-$(document).ready(function () {
-    initMap(33.7489954, -84.3879824);
-});
-
 function sunsetFunction(response) {
     let lat = response.results[0].geometry.location.lat;
     let lng = response.results[0].geometry.location.lng;
@@ -270,6 +170,106 @@ function sunsetFunction(response) {
         let tomorrowTomorrowDaylength = moment(tomorrowTomorrowSunset).diff(tomorrowTomorrowSunrise, "hours");
         $("#tomorrowTomorrowSunsetBody").append("Day length: " + tomorrowTomorrowDaylength + " hours<br>");
 
+    });
+}
+
+function futureWeather(response) {
+
+    const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
+    let lat = 33.7401600;
+    let lng = -84.4203400;
+    const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+
+    let todayList = [];
+    let tomorrowList = [];
+    let tomorrowTomorrowList = [];
+
+    $.ajax({
+        url: futureWeatherURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log(response);
+        let currentTime = moment().format("YYYY-MM-DD");
+        console.log(currentTime + "current time");
+        let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
+        console.log(tomorrowTime + "tomorrow time");
+        let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
+        console.log(tomorrowTomorrowTime + "tomorrow Tomorrow time");
+
+        let weatherList = response.list;
+
+        console.log(weatherList);
+
+        for (let i = 0; i < weatherList.length; i++) {
+            let weatherDay = weatherList[i].dt_txt;
+            weatherDay = moment(weatherDay).format("YYYY-MM-DD");
+            console.log(weatherDay);
+            if (weatherDay === currentTime) {
+                todayList.push(weatherList[i]);
+                console.log("todayList");
+            } else if (weatherDay === tomorrowTime) {
+                tomorrowList.push(weatherList[i]);
+                console.log("tomorrowList");
+            } else if (weatherDay === tomorrowTomorrowTime) {
+                tomorrowTomorrowList.push(weatherList[i]);
+                console.log("tomorrowTomorrowList");
+            }
+            console.log( todayList);
+            console.log(tomorrowList);
+            console.log(tomorrowTomorrowList);
+        }
+    })
+}
+
+// function activity() {
+//     $("#submit2").on("click", function () {
+//         event.preventDefault();
+//         let activity = $("#textarea2").val().trim();
+//         console.log(activity);
+//     });
+// }
+
+
+let map;
+let service;
+let infowindow;
+
+function initMap(lat, lng) {
+    let location = new google.maps.LatLng(lat, lng);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 15
+    });
+    let request = {
+        location: location,
+        radius: '5000',
+        query: 'trail'
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+}
+
+function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+            let place = results[i];
+            createMarker(place);
+        }
+    }
+}
+
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
     });
 }
 
