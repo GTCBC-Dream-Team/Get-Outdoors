@@ -122,16 +122,13 @@ function sunsetFunction(response) {
 }
 
 function futureWeather(response) {
-    let currentTime = moment();
-    let tomorrowTime = moment().add(1, "days");
-    let tomorrowTomorrowTime = moment().add(2, "days");
     
-    var APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
-    var lat = 33.7401600;
-    var lng = -84.4203400;
+    const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
+    let lat = 33.7401600;
+    let lng = -84.4203400;
     const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
     
-    var todayList = [];
+    let todayList = [];
     var tomorrowList = [];
     var tomorrowTomorrowList = [];
     
@@ -140,14 +137,21 @@ function futureWeather(response) {
         method: "GET"
     }).done(function (response) {
         console.log(response);
+        let currentTime = moment().format("YYYY-MM-DD");
+        console.log(currentTime + "current time");
+        let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
+        console.log(tomorrowTime + "tomorrow time");
+        let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
+        console.log(tomorrowTomorrowTime + "tomorrow Tomorrow time");
     
         var weatherList = response.list;
     
         console.log(weatherList);
     
         for (var i = 0; i < weatherList.length; i++) {
-            var weatherDay = weatherList[i].dt;
-            weatherDay = moment(weatherDay);
+            var weatherDay = weatherList[i].dt_txt;
+            weatherDay = moment(weatherDay).format("YYYY-MM-DD");
+            console.log(weatherDay);
             if (weatherDay === currentTime) {
                 todayList.push(weatherList[i]);
                 console.log("todayList");
@@ -158,9 +162,9 @@ function futureWeather(response) {
                 tomorrowTomorrowList.push(weatherList[i]);
                 console.log("tomorrowTomorrowList");
             }
-            console.log("Today:" + todayList);
-            console.log("Tomorrow: " + tomorrowList);
-            console.log("Tomorrow tomorrow: " + tomorrowTomorrowList);
+            console.log( todayList);
+            console.log(tomorrowList);
+            console.log(tomorrowTomorrowList);
         }
     })
 }
