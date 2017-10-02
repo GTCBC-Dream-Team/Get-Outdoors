@@ -237,6 +237,37 @@ function futureWeather(response) {
         //then we'll check the length of each weather state array and declare the longest array as the day's forecast
         //I haven't figured out what to do if they're the same yet
         
+        if (todayClear.length > todayRain.length && todayClear.length > todayClouds.length) {
+            console.log("the average weather is clear");
+        }
+        else if (todayRain.length > todayClear && todayRain.length > todayClouds.length) {
+            console.log("the average weather is rainy");
+        }
+        else {
+            console.log("the average weather is cloudy");
+        }
+        
+        //tomorrowList
+        if (tomorrowClear.length > tomorrowRain.length && tomorrowClear.length > tomorrowClouds.length) {
+            console.log("the average weather is clear");
+        }
+        else if (tomorrowRain.length > tomorrowClear && tomorrowRain.length > tomorrowClouds.length) {
+            console.log("the average weather is rainy");
+        }
+        else {
+            console.log("the average weather is cloudy");
+        }
+    
+        //tomorrowTomorrowList
+        if (tomorrowTomorrowClear.length > tomorrowTomorrowRain.length && tomorrowTomorrowClear.length > tomorrowTomorrowClouds.length) {
+            console.log("the average weather is clear");
+        }
+        else if (tomorrowTomorrowRain.length > tomorrowTomorrowClear && tomorrowTomorrowRain.length > tomorrowTomorrowClouds.length) {
+            console.log("the average weather is rainy");
+        }
+        else {
+            console.log("the average weather is cloudy");
+        }
         //we also want to get the average high and low temperatures for the day
         //so we'll iterate through each day's list, add the max temps, add the min temps, and divide each temp by the array length
         
