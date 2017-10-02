@@ -99,6 +99,7 @@ function activity() {
     });
 }
 
+
 let map;
 let service;
 let infowindow;
@@ -112,8 +113,8 @@ function initMap(lat, lng) {
     });
     let request = {
         location: location,
-        radius: '500',
-        query: 'restaurant'
+        radius: '5000',
+        query: 'trail'
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -121,10 +122,10 @@ function initMap(lat, lng) {
 }
 
 function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-            var place = results[i];
-            createMarker(results[i]);
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+            let place = results[i];
+            createMarker(place);
         }
     }
 }
@@ -141,20 +142,6 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
-
-//
-// function hey(name) {
-//     return function () {
-//         console.log('Hey', name);
-//     }
-// }
-//
-// const showHey = hey('Gene');
-// showHey();
-
-//use callbacks
-
-//nearby search request
 
 function sunsetFunction(response) {
     let lat = response.results[0].geometry.location.lat;
@@ -261,3 +248,21 @@ function sunsetFunction(response) {
 
     });
 }
+
+$(document).ready(function() {
+    initMap(33.7489954,-84.3879824);
+})
+
+//
+// function hey(name) {
+//     return function () {
+//         console.log('Hey', name);
+//     }
+// }
+//
+// const showHey = hey('Gene');
+// showHey();
+
+//use callbacks
+
+//nearby search request
