@@ -107,7 +107,7 @@ function sunsetFunction(response) {
         var currentSunrise = response.results.sunrise;
         console.log("Sunrise: " + currentSunrise);
         
-        var currentSunset = response.sunset;
+        var currentSunset = response.results.sunset;
         console.log("Sunset: " + currentSunset);
         
         var currentNoon = response.results.solar_noon;
