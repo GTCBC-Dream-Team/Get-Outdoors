@@ -45,7 +45,6 @@ $("#submit").on("click", function () {
             let lat = response.results[0].geometry.location.lat;
             let lng = response.results[0].geometry.location.lng;
             const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
-            const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
             $.ajax({
                 url: currentWeatherURL,
                 method: "GET",
@@ -91,13 +90,88 @@ $("#submit").on("click", function () {
     })
 });
 
-function activity() {
-    $("#submit2").on("click", function () {
-        event.preventDefault();
-        let activity = $("#textarea2").val().trim();
-        console.log(activity);
+function sunsetFunction(response) {
+    let lat = response.results[0].geometry.location.lat;
+    let lng = response.results[0].geometry.location.lng;
+    let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng;
+    let currentTime = moment();
+    $.ajax({
+        url: sunsetURL,
+        method: "GET",
+        success: futureWeather(response)
+    }).done(function (response) {
+        console.log(response);
+        
+        $("#currentSunsetHead").text("Today's Sun Data");
+        
+        var currentSunrise = response.results.sunrise;
+        console.log("Sunrise: " + currentSunrise);
+        
+        var currentSunset = response.sunset;
+        console.log("Sunset: " + currentSunset);
+        
+        var currentNoon = response.results.solar_noon;
+        console.log("Solar noon: " + currentNoon);
+        
+        var currentDaylength = response.results.day_length;
+        console.log("Day length: " + currentDaylength);
+        
+        var nextDay = currentTime.day(0);
+        console.log("Next Day: " + nextDay.format("dddd"));
     });
 }
+
+function futureWeather(response) {
+    let currentTime = moment();
+    let tomorrowTime = moment().add(1, "days");
+    let tomorrowTomorrowTime = moment().add(2, "days");
+    
+    var APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
+    var lat = 33.7401600;
+    var lng = -84.4203400;
+    const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+    
+    var todayList = [];
+    var tomorrowList = [];
+    var tomorrowTomorrowList = [];
+    
+    $.ajax({
+        url: futureWeatherURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log(response);
+    
+        var weatherList = response.list;
+    
+        console.log(weatherList);
+    
+        for (var i = 0; i < weatherList.length; i++) {
+            var weatherDay = weatherList[i].dt;
+            weatherDay = moment(weatherDay);
+            if (weatherDay === currentTime) {
+                todayList.push(weatherList[i]);
+                console.log("todayList");
+            } else if (weatherDay === tomorrowTime) {
+                tomorrowList.push(weatherList[i]);
+                console.log("tomorrowList");
+            } else if (weatherDay === tomorrowTomorrowTime) {
+                tomorrowTomorrowList.push(weatherList[i]);
+                console.log("tomorrowTomorrowList");
+            }
+            console.log("Today:" + todayList);
+            console.log("Tomorrow: " + tomorrowList);
+            console.log("Tomorrow tomorrow: " + tomorrowTomorrowList);
+        }
+    })
+}
+
+// function activity() {
+//     $("#submit2").on("click", function () {
+//         event.preventDefault();
+//         let activity = $("#textarea2").val().trim();
+//         console.log(activity);
+//     });
+// }
 
 
 let map;
@@ -143,39 +217,9 @@ function createMarker(place) {
     });
 }
 
-function sunsetFunction(response) {
-    let lat = response.results[0].geometry.location.lat;
-    let lng = response.results[0].geometry.location.lng;
-    let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng;
-    let currentTime = moment();
-    $.ajax({
-        url: sunsetURL,
-        method: "GET"
-    }).done(function (response) {
-        console.log(response);
-        
-        $("#currentSunsetHead").text("Today's Sun Data");
-        
-        var currentSunrise = response.results.sunrise;
-        console.log("Sunrise: " + currentSunrise);
-        
-        var currentSunset = response.sunset;
-        console.log("Sunset: " + currentSunset);
-        
-        var currentNoon = response.results.solar_noon;
-        console.log("Solar noon: " + currentNoon);
-        
-        var currentDaylength = response.results.day_length;
-        console.log("Day length: " + currentDaylength);
-        
-        var nextDay = currentTime.day(0);
-        console.log("Next Day: " + nextDay.format("dddd"));
-    });
-}
-
-$(document).ready(function() {
-    initMap(33.7489954,-84.3879824);
-})
+$(document).ready(function () {
+    initMap(33.7489954, -84.3879824);
+});
 
 //
 // function hey(name) {
