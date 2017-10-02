@@ -36,8 +36,6 @@ $.ajax({
         console.log("Tomorrow: " + tomorrowList);
         console.log("Tomorrow tomorrow: " + tomorrowTomorrowList);
     }
-    //the previous code doesn't exactly work, so I'll be pseuodocoding from here
-    
     //we will iterate through todayList, tomorrowList, and tomorrowTomorrowList, looking for weather states and sorting them into new weather state arrays by day still
     
     //var clearState = "Clear";
