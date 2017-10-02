@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+
     <title>Get Outdoors - Your planning guide to adventure</title>
-    
+
     <link rel="stylesheet" href="assets/css/reset.css">
-    
+
     <!-- Compiled and minified CSS for materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    
+
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-    
+
     <!--Materialize JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!--Material Icons-->
@@ -22,12 +22,12 @@
     <!--Team Stylesheet-->
     <link rel="stylesheet" href="assets/css/compass.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!--Moment JS-->
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <!--- google maps callback-->
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>-->
-    
+
     <!--google.maps.Geocoder-->
 
 </head>
@@ -59,13 +59,13 @@
       <!--<a href="#" class="brand-logo right">Logo</a>-->
     <a class="brand-logo left">GET OUTDOORS!<i class="material-icons"
                                                style="margin-left: 4px; font-size:35px;">terrain</i></a></span>
-    
+
     </div>
 </nav>
 
 <main>
     <br>
-    
+
     <!--contains slideshow for weather and daylight hours-->
     <div class="row">
         <div class="col s12 12 m12 l12 center-align">
@@ -76,77 +76,83 @@
                             <img src="http://lorempixel.com/580/250/nature/1" alt="">
                             <div class="caption left-align">
                                 <h3 id="currentWeatherHead">Left</h3>
-                                <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm on the left</h5>
+                                <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm on the
+                                    left</h5>
                             </div>
                         </div>
                         <div id="right-side" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
                                 <h3 id="currentSunsetHead">Right</h3>
-                                <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on the right!</h5>
+                                <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on the
+                                    right!</h5>
                             </div>
                         </div>
                     </li>
-                    
-                    
+
+
                     <li>
                         <div id="left-side2" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/1" alt="">
                             <div class="caption left-align">
-                                <h3>Left</h3>
-                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                                <h3 id="tomorrowWeatherHead">Left</h3>
+                                <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm on the
+                                    left</h5>
                             </div>
                         </div>
                         <div id="right-side2" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
-                                <h3>Right</h3>
-                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+                                <h3 id="tomorrowSunsetHead">Right</h3>
+                                <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm on the
+                                    right!</h5>
                             </div>
                         </div>
                     </li>
-                    
+
                     <li>
                         <div id="left-side3" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/1" alt="">
                             <div class="caption left-align">
-                                <h3>Left</h3>
-                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                                <h3 id="tomorrowTomorrowWeatherHead">Left</h3>
+                                <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">Yep I'm on
+                                    the left</h5>
                             </div>
                         </div>
                         <div id="right-side3" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
-                                <h3>Right</h3>
-                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+                                <h3 id="tomorrowTomorrowSunsetHead">Right</h3>
+                                <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">And I'm on
+                                    the right!</h5>
                             </div>
                         </div>
                     </li>
-                
+
                 </ul>
             </div>
         </div>
-        </div>
-        
-        
-        <!--dropdown menu for activity selection-->
-        <div class="row">
-            <form>
-                <div class="row">
-                    <div class="input-field">
-                        <input id="textarea2" type="text" class="materialize-textarea">
-                        <button id="submit2">submit</button>
-                        <label for="textarea2">Activities (will eventually be a dropdown)</label>
-                    </div>
+    </div>
+
+
+    <!--dropdown menu for activity selection-->
+    <div class="row">
+        <form>
+            <div class="row">
+                <div class="input-field">
+                    <input id="textarea2" type="text" class="materialize-textarea">
+                    <button id="submit2">submit</button>
+                    <label for="textarea2">Activities (will eventually be a dropdown)</label>
                 </div>
-            </form>
-        </div>
-        
-        
-        <h1>MAPS</h1>
-        
-        <div id="map" class="responsive-img"></div>
-        
+            </div>
+        </form>
+    </div>
+
+
+    <h1>MAPS</h1>
+
+    <div id="map" class="responsive-img"></div>
+
 </main>
 
 <footer class="page-footer brown darken-1">
@@ -168,9 +174,7 @@
             </div>
         </div>
     </footer>
-</footer>
-    
-    
+
     <script src="assets/js/app.js"></script>
     <!--<script src="assets/js/openWeatherAPI.js"></script>-->
     <!--<script src="assets/js/sunsetAPI.js"></script>-->
