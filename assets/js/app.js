@@ -52,27 +52,27 @@ $("#submit").on("click", function () {
                 success: sunsetFunction(response)
             }).done(function (response) {
                 console.log(response);
-                
+
                 //shows current weather state
                 var currentWeatherState = response.weather[0].main;
                 console.log("current weather state: " + currentWeatherState);
                 $("#currentWeatherHead").html("Today's Weather");
                 $("#currentWeatherBody").html(currentWeatherState + "<br>");
-                
+
                 //shows current temperature
                 var tempKelvin = response.main.temp;
                 var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
                 tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
                 console.log("current temperature: " + tempFahrenheit + "F");
                 $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
-                
+
                 //shows today's min temperature
                 var minKelvin = response.main.temp_min;
                 var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
                 minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
                 console.log("min temperature: " + minFahrenheit + "F");
                 $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");
-                
+
                 //shows today's max temperature
                 var maxKelvin = response.main.temp_max;
                 var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
@@ -90,7 +90,6 @@ $("#submit").on("click", function () {
         initMap(lat, lng);
     })
 });
-
 function activity() {
     $("#submit2").on("click", function () {
         event.preventDefault();
@@ -100,13 +99,14 @@ function activity() {
 }
 
 
+
 let map;
 let service;
 let infowindow;
 
 function initMap(lat, lng) {
     let location = new google.maps.LatLng(lat, lng);
-    
+
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
         zoom: 15
@@ -114,7 +114,7 @@ function initMap(lat, lng) {
     let request = {
         location: location,
         radius: '5000',
-        query: 'trail'
+        query: 'fountains'
     };
     
     service = new google.maps.places.PlacesService(map);
@@ -134,9 +134,8 @@ function createMarker(place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         map: map,
-        position: place.geometry.location
+        position: placeLoc
     });
-    
     google.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
@@ -153,21 +152,21 @@ function sunsetFunction(response) {
         method: "GET"
     }).done(function (response) {
         console.log(response);
-        
+
         $("#currentSunsetHead").text("Today's Sun Data");
-        
+
         var currentSunrise = response.results.sunrise;
         console.log("Sunrise: " + currentSunrise);
-        
+
         var currentSunset = response.sunset;
         console.log("Sunset: " + currentSunset);
-        
+
         var currentNoon = response.results.solar_noon;
         console.log("Solar noon: " + currentNoon);
-        
+
         var currentDaylength = response.results.day_length;
         console.log("Day length: " + currentDaylength);
-        
+
         var nextDay = currentTime.day(0);
         console.log("Next Day: " + nextDay.format("dddd"));
     });
