@@ -1,5 +1,10 @@
 /* Onto the styling now */
 
+/*toggle display to use for pre-loader
+position absolutely in the center
+whenever make ajax, or async toggle on inside done toggle off
+check if materalize toggle jquery*/
+
 #compass,
 #compass body {
     width: 100%;
