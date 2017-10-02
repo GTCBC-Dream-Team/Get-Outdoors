@@ -124,8 +124,8 @@ function sunsetFunction(response) {
 function futureWeather(response) {
     
     const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
-    let lat = 33.7401600;
-    let lng = -84.4203400;
+    let lat = response.results[0].geometry.location.lat;
+    let lng = response.results[0].geometry.location.lng;
     const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
     
     let todayList = [];
@@ -143,11 +143,11 @@ function futureWeather(response) {
         console.log(tomorrowTime + "tomorrow time");
         let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
         console.log(tomorrowTomorrowTime + "tomorrow Tomorrow time");
-    
+        
         var weatherList = response.list;
-    
+        
         console.log(weatherList);
-    
+        
         for (var i = 0; i < weatherList.length; i++) {
             var weatherDay = weatherList[i].dt_txt;
             weatherDay = moment(weatherDay).format("YYYY-MM-DD");
@@ -162,12 +162,105 @@ function futureWeather(response) {
                 tomorrowTomorrowList.push(weatherList[i]);
                 console.log("tomorrowTomorrowList");
             }
-            console.log( todayList);
+            console.log(todayList);
             console.log(tomorrowList);
             console.log(tomorrowTomorrowList);
         }
+        //we will iterate through todayList, tomorrowList, and tomorrowTomorrowList, looking for weather states and sorting them into new weather state arrays by day still
+        
+        var clearState = "Clear";
+        var rainState = "Rain";
+        var cloudState = "Clouds";
+        
+        var todayClear = [];
+        var todayRain = [];
+        var todayClouds = [];
+        
+        console.log("outside the todayList loop");
+        for (i = 0; i < todayList.length; i++) {
+            var weatherState = todayList[i].weather[0].main;
+            
+            if (weatherState === clearState) {
+                todayClear.push(todayList[i]);
+            } else if (weatherState === rainState) {
+                todayRain.push(todayList[i]);
+            } else if (weatherState === cloudState) {
+                todayClouds.push(todayList[i]);
+            }
+        }
+        console.log(todayClear);
+        console.log(todayRain);
+        console.log(todayClouds);
+        
+        //we'll repeat this process for the other days as well
+        var tomorrowClear = [];
+        var tomorrowRain = [];
+        var tomorrowClouds = [];
+    
+        console.log("outside the tomorrowList loop");
+        for (i = 0; i < tomorrowList.length; i++) {
+            weatherState = tomorrowList[i].weather[0].main;
+            
+            if (weatherState === clearState) {
+                tomorrowClear.push(tomorrowList[i]);
+            } else if (weatherState === rainState) {
+                tomorrowRain.push(tomorrowList[i]);
+            } else if (weatherState === cloudState) {
+                tomorrowClouds.push(tomorrowList[i]);
+            }
+        }
+        console.log(tomorrowClear);
+        console.log(tomorrowRain);
+        console.log(tomorrowClouds);
+        
+        //tomorrowTomorrowList
+        var tomorrowTomorrowClear = [];
+        var tomorrowTomorrowRain = [];
+        var tomorrowTomorrowClouds = [];
+    
+        console.log("outside the tomorrowTomorrowList loop");
+        for (i = 0; i < tomorrowTomorrowList.length; i++) {
+            weatherState = tomorrowTomorrowList[i].weather[0].main;
+            
+            if (weatherState === clearState) {
+                tomorrowTomorrowClear.push(tomorrowTomorrowList[i]);
+            } else if (weatherState === rainState) {
+                tomorrowTomorrowRain.push(tomorrowTomorrowList[i]);
+            } else if (weatherState === cloudState) {
+                tomorrowTomorrowClouds.push(tomorrowTomorrowList[i]);
+            }
+        }
+        console.log(tomorrowTomorrowClear);
+        console.log(tomorrowTomorrowRain);
+        console.log(tomorrowTomorrowClouds);
+    
+        //then we'll check the length of each weather state array and declare the longest array as the day's forecast
+        //I haven't figured out what to do if they're the same yet
+        
+        //we also want to get the average high and low temperatures for the day
+        //so we'll iterate through each day's list, add the max temps, add the min temps, and divide each temp by the array length
+        
+        //var todayMaxTemp = 0;
+        //var todayMinTemp = 0;
+        //var tomorrowMaxTemp = 0;
+        //var tomorrowMinTemp = 0;
+        //var tomorrowTomorrowMaxTemp = 0;
+        //var tomorrowTomorrowMinTemp = 0;
+        
+        //for (i = 0; i < todayList.length; i++) {
+        //  todayThisMax = response.todayList[i].main.temp_max;
+        //  todayThisMin = response.todayList[i].main.temp_min;
+        //  todayMaxTemp = todayMaxTemp + todayThisMax;
+        //  todayMinTemp = todayMinTemp + todayThisMin;
+        //}
+        //todayMaxTemp = (todayMaxTemp)/(todayList.length)
+        //todayMinTemp = (todayMinTemp)/(todaylist.length)
+        
+        //we'll repeat this process for the other two days
+        //I realized after typing this, that it might be better to grab the overall highest temp for max and overall highest temp for min...but I'm choosing to ignore that.
     })
 }
+
 
 // function activity() {
 //     $("#submit2").on("click", function () {
