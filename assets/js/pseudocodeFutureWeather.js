@@ -1,12 +1,12 @@
-let currentTime = moment().format("YYYY-MM-DD");
-let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
-let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
+var currentTime = moment();
+var tomorrowTime = moment().add(1, "days");
+var tomorrowTomorrowTime = moment().add(2, "days");
 
 var APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
 var lat = 33.7401600;
 var lng = -84.4203400;
 
-const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+var futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
 
 var todayList = [];
 var tomorrowList = [];
@@ -24,7 +24,7 @@ $.ajax({
 
     for (var i = 0; i < weatherList.length; i++) {
         var weatherDay = weatherList[i].clouds.dt;
-        weatherDay = moment(weatherDay).format("YYYY-MM-DD");
+        weatherDay = moment(weatherDay);
         if (weatherDay === currentTime){
             todayList.push(weatherList[i]);
         } else if (weatherDay === tomorrowTime){
