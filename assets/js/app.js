@@ -129,8 +129,8 @@ function futureWeather(response) {
     const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
     
     let todayList = [];
-    var tomorrowList = [];
-    var tomorrowTomorrowList = [];
+    let tomorrowList = [];
+    let tomorrowTomorrowList = [];
     
     $.ajax({
         url: futureWeatherURL,
@@ -144,12 +144,12 @@ function futureWeather(response) {
         let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
         console.log(tomorrowTomorrowTime + "tomorrow Tomorrow time");
         
-        var weatherList = response.list;
+        let weatherList = response.list;
         
         console.log(weatherList);
         
-        for (var i = 0; i < weatherList.length; i++) {
-            var weatherDay = weatherList[i].dt_txt;
+        for (let i = 0; i < weatherList.length; i++) {
+            let weatherDay = weatherList[i].dt_txt;
             weatherDay = moment(weatherDay).format("YYYY-MM-DD");
             console.log(weatherDay);
             if (weatherDay === currentTime) {
@@ -196,7 +196,7 @@ function futureWeather(response) {
         var tomorrowClear = [];
         var tomorrowRain = [];
         var tomorrowClouds = [];
-    
+        
         console.log("outside the tomorrowList loop");
         for (i = 0; i < tomorrowList.length; i++) {
             weatherState = tomorrowList[i].weather[0].main;
@@ -217,7 +217,7 @@ function futureWeather(response) {
         var tomorrowTomorrowClear = [];
         var tomorrowTomorrowRain = [];
         var tomorrowTomorrowClouds = [];
-    
+        
         console.log("outside the tomorrowTomorrowList loop");
         for (i = 0; i < tomorrowTomorrowList.length; i++) {
             weatherState = tomorrowTomorrowList[i].weather[0].main;
@@ -233,7 +233,7 @@ function futureWeather(response) {
         console.log(tomorrowTomorrowClear);
         console.log(tomorrowTomorrowRain);
         console.log(tomorrowTomorrowClouds);
-    
+        
         //then we'll check the length of each weather state array and declare the longest array as the day's forecast
         //I haven't figured out what to do if they're the same yet
         
@@ -257,7 +257,7 @@ function futureWeather(response) {
         else {
             console.log("the average weather is cloudy");
         }
-    
+        
         //tomorrowTomorrowList
         if (tomorrowTomorrowClear.length > tomorrowTomorrowRain.length && tomorrowTomorrowClear.length > tomorrowTomorrowClouds.length) {
             console.log("the average weather is clear");
@@ -268,27 +268,52 @@ function futureWeather(response) {
         else {
             console.log("the average weather is cloudy");
         }
+        
         //we also want to get the average high and low temperatures for the day
         //so we'll iterate through each day's list, add the max temps, add the min temps, and divide each temp by the array length
         
-        //var todayMaxTemp = 0;
-        //var todayMinTemp = 0;
-        //var tomorrowMaxTemp = 0;
-        //var tomorrowMinTemp = 0;
-        //var tomorrowTomorrowMaxTemp = 0;
-        //var tomorrowTomorrowMinTemp = 0;
+        let todayMaxTemp = 0;
+        let todayMinTemp = 0;
         
-        //for (i = 0; i < todayList.length; i++) {
-        //  todayThisMax = response.todayList[i].main.temp_max;
-        //  todayThisMin = response.todayList[i].main.temp_min;
-        //  todayMaxTemp = todayMaxTemp + todayThisMax;
-        //  todayMinTemp = todayMinTemp + todayThisMin;
-        //}
-        //todayMaxTemp = (todayMaxTemp)/(todayList.length)
-        //todayMinTemp = (todayMinTemp)/(todaylist.length)
+        for (let i = 0; i < todayList.length; i++) {
+            todayMaxTemp += todayList[i].main.temp_max;
+            todayMinTemp += todayList[i].main.temp_min;
+            if ( (i + 1) === todayList.length) {
+                todayMaxTemp /= todayList.length;
+                console.log(todayMaxTemp);
+                todayMinTemp /= todayList.length;
+                console.log(todayMinTemp);
+            }
+        }
+    
+        let tomorrowMaxTemp = 0;
+        let tomorrowMinTemp = 0;
+    
+        for (let i = 0; i < tomorrowList.length; i++) {
+            tomorrowMaxTemp += tomorrowList[i].main.temp_max;
+            tomorrowMinTemp += tomorrowList[i].main.temp_min;
+            if ( (i + 1) === tomorrowList.length) {
+                tomorrowMaxTemp /= tomorrowList.length;
+                console.log(tomorrowMaxTemp);
+                tomorrowMinTemp /= tomorrowList.length;
+                console.log(tomorrowMinTemp);
+            }
+        }
         
-        //we'll repeat this process for the other two days
-        //I realized after typing this, that it might be better to grab the overall highest temp for max and overall highest temp for min...but I'm choosing to ignore that.
+        let tomorrowTomorrowMaxTemp = 0;
+        let tomorrowTomorrowMinTemp = 0;
+        
+        for (let i = 0; i < tomorrowTomorrowList.length; i++) {
+            tomorrowTomorrowMaxTemp += tomorrowTomorrowList[i].main.temp_max;
+            tomorrowTomorrowMinTemp += tomorrowTomorrowList[i].main.temp_min;
+            if ( (i + 1) === tomorrowTomorrowList.length) {
+                tomorrowTomorrowMaxTemp /= tomorrowTomorrowList.length;
+                console.log(tomorrowTomorrowMaxTemp);
+                tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
+                console.log(tomorrowTomorrowMinTemp);
+            }
+        }
+        
     })
 }
 
