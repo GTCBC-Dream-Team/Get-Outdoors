@@ -45,7 +45,6 @@ $("#submit").on("click", function () {
             let lat = response.results[0].geometry.location.lat;
             let lng = response.results[0].geometry.location.lng;
             const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
-            const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
             $.ajax({
                 url: currentWeatherURL,
                 method: "GET",
@@ -54,6 +53,7 @@ $("#submit").on("click", function () {
 
                 //shows current weather state
                 var currentWeatherState = response.weather[0].main;
+                console.log("current weather state: " + currentWeatherState);
                 $("#currentWeatherHead").html("Today's Weather");
                 $("#currentWeatherBody").html(currentWeatherState + "<br>");
 
@@ -86,13 +86,57 @@ $("#submit").on("click", function () {
     })
 });
 
-function activity() {
-    $("#submit2").on("click", function () {
-        event.preventDefault();
-        let activity = $("#textarea2").val().trim();
-        console.log(activity);
-    });
+function futureWeather(response) {
+    let currentTime = moment();
+    let tomorrowTime = moment().add(1, "days");
+    let tomorrowTomorrowTime = moment().add(2, "days");
+
+    var APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
+    var lat = 33.7401600;
+    var lng = -84.4203400;
+    const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+
+    var todayList = [];
+    var tomorrowList = [];
+    var tomorrowTomorrowList = [];
+
+    $.ajax({
+        url: futureWeatherURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log(response);
+
+        var weatherList = response.list;
+
+        console.log(weatherList);
+
+        for (var i = 0; i < weatherList.length; i++) {
+            var weatherDay = weatherList[i].dt;
+            weatherDay = moment(weatherDay);
+            if (weatherDay === currentTime) {
+                todayList.push(weatherList[i]);
+                console.log("todayList");
+            } else if (weatherDay === tomorrowTime) {
+                tomorrowList.push(weatherList[i]);
+                console.log("tomorrowList");
+            } else if (weatherDay === tomorrowTomorrowTime) {
+                tomorrowTomorrowList.push(weatherList[i]);
+                console.log("tomorrowTomorrowList");
+            }
+            console.log("Today:" + todayList);
+            console.log("Tomorrow: " + tomorrowList);
+            console.log("Tomorrow tomorrow: " + tomorrowTomorrowList);
+        }
+    })
 }
+
+// function activity() {
+//     $("#submit2").on("click", function () {
+//         event.preventDefault();
+//         let activity = $("#textarea2").val().trim();
+//         console.log(activity);
+//     });
+// }
 
 
 let map;
@@ -137,6 +181,10 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
+
+$(document).ready(function () {
+    initMap(33.7489954, -84.3879824);
+});
 
 function sunsetFunction(response) {
     let lat = response.results[0].geometry.location.lat;
