@@ -51,11 +51,9 @@ $("#submit").on("click", function () {
                 method: "GET",
                 success: sunsetFunction(response)
             }).done(function (response) {
-                console.log(response);
 
                 //shows current weather state
                 var currentWeatherState = response.weather[0].main;
-                console.log("current weather state: " + currentWeatherState);
                 $("#currentWeatherHead").html("Today's Weather");
                 $("#currentWeatherBody").html(currentWeatherState + "<br>");
 
@@ -63,22 +61,19 @@ $("#submit").on("click", function () {
                 var tempKelvin = response.main.temp;
                 var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
                 tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
-                console.log("current temperature: " + tempFahrenheit + "F");
-                $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
+                $("#currentWeatherBody").append("Current: " + tempFahrenheit + " F<br>");
 
                 //shows today's min temperature
                 var minKelvin = response.main.temp_min;
                 var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
                 minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
-                console.log("min temperature: " + minFahrenheit + "F");
-                $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");
+                $("#currentWeatherBody").append("Min: " + minFahrenheit + " F<br>");
 
                 //shows today's max temperature
                 var maxKelvin = response.main.temp_max;
                 var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
                 maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
-                console.log("max temperature: " + maxFahrenheit + "F");
-                $("#currentWeatherBody").append("Max: " + maxFahrenheit + "<br>");
+                $("#currentWeatherBody").append("Max: " + maxFahrenheit + " F<br>");
             });
         }
     }).done(function (response) {
@@ -161,28 +156,22 @@ function sunsetFunction(response) {
         url: sunsetURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
 
         $("#currentSunsetHead").text("Today's Sun Data");
 
         var currentSunrise = response.results.sunrise;
         currentSunriseFormatted = moment(currentSunrise).format("h:mm a");
-        console.log("Sunrise: " + currentSunriseFormatted);
         $("#currentSunsetBody").html("Sunrise: " + currentSunriseFormatted + "<br>");
 
         var currentSunset = response.results.sunset;
         currentSunsetFormatted = moment(currentSunset).format("h:mm a");
-        console.log("Sunset: " + currentSunsetFormatted);
         $("#currentSunsetBody").append("Sunset: " + currentSunsetFormatted + "<br>");
 
         var currentNoon = response.results.solar_noon;
         currentNoonFormatted = moment(currentNoon).format("h:mm a");
-        console.log("Solar noon: " + currentNoonFormatted);
         $("#currentSunsetBody").append("Solar noon: " + currentNoonFormatted + "<br>");
 
         var currentDaylength = moment(currentSunset).diff(currentSunrise, "hours");
-
-        console.log("Day length: " + currentDaylength + " hours");
         $("#currentSunsetBody").append("Day length: " + currentDaylength + " hours<br>");
 
     });
@@ -192,29 +181,22 @@ function sunsetFunction(response) {
         url: tomorrowSunsetURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
-        console.log("this is next day stuff");
 
-        $("#currentSunsetHead").text("Tomorrow's Sun Data");
+        $("#tomorrowSunsetHead").text("Tomorrow's Sun Data");
 
         var tomorrowSunrise = response.results.sunrise;
         tomorrowSunriseFormatted = moment(tomorrowSunrise).format("h:mm a");
-        console.log("Sunrise: " + tomorrowSunriseFormatted);
         $("#tomorrowSunsetBody").html("Sunrise: " + tomorrowSunriseFormatted + "<br>");
 
         var tomorrowSunset = response.results.sunset;
         tomorrowSunsetFormatted = moment(tomorrowSunset).format("h:mm a");
-        console.log("Sunset: " + tomorrowSunsetFormatted);
         $("#tomorrowSunsetBody").append("Sunset: " + tomorrowSunsetFormatted + "<br>");
 
         var tomorrowNoon = response.results.solar_noon;
         tomorrowNoonFormatted = moment(tomorrowNoon).format("h:mm a");
-        console.log("Solar noon: " + tomorrowNoonFormatted);
         $("#tomorrowSunsetBody").append("Solar noon: " + tomorrowNoonFormatted + "<br>");
 
         var tomorrowDaylength = moment(tomorrowSunset).diff(tomorrowSunrise, "hours");
-
-        console.log("Day length: " + tomorrowDaylength + " hours");
         $("#tomorrowSunsetBody").append("Day length: " + tomorrowDaylength + " hours<br>");
     });
 
@@ -222,35 +204,29 @@ function sunsetFunction(response) {
         url: tomorrowTomorrowSunsetURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
 
         $("#tomorrowTomorrowSunsetHead").text("The Next Day's Sun Data");
 
         var tomorrowTomorrowSunrise = response.results.sunrise;
         tomorrowTomorrowSunriseFormatted = moment(tomorrowTomorrowSunrise).format("h:mm a");
-        console.log("Sunrise: " + tomorrowTomorrowSunriseFormatted);
         $("#tomorrowTomorrowSunsetBody").html("Sunrise: " + tomorrowTomorrowSunriseFormatted + "<br>");
 
         var tomorrowTomorrowSunset = response.results.sunset;
         tomorrowTomorrowSunsetFormatted = moment(tomorrowTomorrowSunset).format("h:mm a");
-        console.log("Sunset: " + tomorrowTomorrowSunsetFormatted);
         $("#tomorrowTomorrowSunsetBody").append("Sunset: " + tomorrowTomorrowSunsetFormatted + "<br>");
 
         var tomorrowTomorrowNoon = response.results.solar_noon;
         tomorrowTomorrowNoonFormatted = moment(tomorrowTomorrowNoon).format("h:mm a");
-        console.log("Solar noon: " + tomorrowTomorrowNoonFormatted);
         $("#tomorrowTomorrowSunsetBody").append("Solar noon: " + tomorrowTomorrowNoonFormatted + "<br>");
 
         var tomorrowTomorrowDaylength = moment(tomorrowTomorrowSunset).diff(tomorrowTomorrowSunrise, "hours");
-
-        console.log("Day length: " + tomorrowTomorrowDaylength + " hours");
         $("#tomorrowTomorrowSunsetBody").append("Day length: " + tomorrowTomorrowDaylength + " hours<br>");
 
     });
 }
 
-$(document).ready(function() {
-    initMap(33.7489954,-84.3879824);
+$(document).ready(function () {
+    initMap(33.7489954, -84.3879824);
 })
 
 //
