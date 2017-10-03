@@ -93,44 +93,37 @@ $("#submit").on("click", function () {
 function sunsetFunction(response) {
     let lat = response.results[0].geometry.location.lat;
     let lng = response.results[0].geometry.location.lng;
-    let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng;
+    let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&formatted=0";
     let currentTime = moment();
     $.ajax({
         url: sunsetURL,
         method: "GET",
         success: futureWeather(response)
     }).done(function (response) {
-        console.log(response);
-        
-        $("#currentSunsetHead").text("Today's Sun Data");
-        
-        var currentSunrise = response.results.sunrise;
-        console.log("Sunrise: " + currentSunrise);
-        
-        var currentSunset = response.sunset;
-        console.log("Sunset: " + currentSunset);
-        
-        var currentNoon = response.results.solar_noon;
-        console.log("Solar noon: " + currentNoon);
-        
-        var currentDaylength = response.results.day_length;
-        console.log("Day length: " + currentDaylength);
-        
-        var nextDay = currentTime.day(0);
-        console.log("Next Day: " + nextDay.format("dddd"));
+        $("#tomorrowSunsetHead").text("Tomorrow's Sun Data");
+
+        let tomorrowSunrise = response.results.sunrise;
+        tomorrowSunriseFormatted = moment(tomorrowSunrise).format("h:mm a");
+        $("#tomorrowSunsetBody").html("Sunrise: " + tomorrowSunriseFormatted + "<br>");
+
+        let tomorrowSunset = response.results.sunset;
+        tomorrowSunsetFormatted = moment(tomorrowSunset).format("h:mm a");
+        $("#tomorrowSunsetBody").append("Sunset: " + tomorrowSunsetFormatted + "<br>");
+
+        let tomorrowNoon = response.results.solar_noon;
+        tomorrowNoonFormatted = moment(tomorrowNoon).format("h:mm a");
+        $("#tomorrowSunsetBody").append("Solar noon: " + tomorrowNoonFormatted + "<br>");
+
+        let tomorrowDaylength = moment(tomorrowSunset).diff(tomorrowSunrise, "hours");
+        $("#tomorrowSunsetBody").append("Day length: " + tomorrowDaylength + " hours<br>");
     });
 }
 
 
-// <<<<<<< HEAD
+
 $(document).ready(function() {
     initMap(33.7489954,-84.3879824);
 });
-// =======
-// $(document).ready(function () {
-//     initMap(33.7489954, -84.3879824);
-// })
-// >>>>>>> origin/julie
 
 function futureWeather(response) {
     
@@ -261,15 +254,15 @@ function futureWeather(response) {
         //tomorrowList
         if (tomorrowClear.length > tomorrowRain.length && tomorrowClear.length > tomorrowClouds.length) {
             console.log("the average weather is clear");
-            $("#tomorrowWeatherBody").text("Clear");
+            $("#tomorrowWeatherBody").html("Clear<br>");
         }
         else if (tomorrowRain.length > tomorrowClear && tomorrowRain.length > tomorrowClouds.length) {
             console.log("the average weather is rainy");
-            $("#tomorrowWeatherBody").text("Rain");
+            $("#tomorrowWeatherBody").html("Rain<br>");
         }
         else {
             console.log("the average weather is cloudy");
-            $("#tomorrowWeatherBody").text("Clouds");
+            $("#tomorrowWeatherBody").html("Clouds<br>");
         }
 
         //tomorrowTomorrowList
@@ -334,10 +327,14 @@ function futureWeather(response) {
             if ( (i + 1) === tomorrowTomorrowList.length) {
                 tomorrowTomorrowMaxTemp /= tomorrowTomorrowList.length;
                 let tomorrowTomorrowMaxF = (tomorrowTomorrowMaxTemp - 273.15) * 1.80 + 32;
+                tomorrowTomorrowMaxF = Number(Math.round(tomorrowTomorrowMaxF+'e1')+'e-1');
                 console.log(tomorrowTomorrowMaxF);
+                $("#tomorrowTomorrowWeatherBody").append("Max: " + tomorrowTomorrowMaxF + "F<br>");
                 tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
                 let tomorrowTomorrowMinF = (tomorrowTomorrowMinTemp - 273.15) * 1.80 + 32;
+                tomorrowTomorrowMinF = Number(Math.round(tomorrowTomorrowMinF+'e1')+'e-1');
                 console.log(tomorrowTomorrowMinF);
+                $("#tomorrowTomorrowWeatherBody").append("Min: " + tomorrowTomorrowMinF + "F<br>");
             }
         }
 
