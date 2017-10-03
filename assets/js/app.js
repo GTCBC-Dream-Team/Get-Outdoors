@@ -93,13 +93,48 @@ $("#submit").on("click", function () {
 function sunsetFunction(response) {
     let lat = response.results[0].geometry.location.lat;
     let lng = response.results[0].geometry.location.lng;
-    let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&formatted=0";
-    let currentTime = moment();
+
+    let currentTime = moment().format("YYYY-MM-DD");
+    let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + currentTime + "&formatted=0";
+
+    let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
+    let tomorrowSunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + tomorrowTime + "&formatted=0";
+
+    let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
+    let tomorrowTomorrowSunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + tomorrowTomorrowTime + "&formatted=0";
+
+    //ajax call for current day's sunset data
     $.ajax({
         url: sunsetURL,
         method: "GET",
         success: futureWeather(response)
     }).done(function (response) {
+        console.log(response);
+        
+        $("#currentSunsetHead").text("Today's Sun Data");
+        
+        let currentSunrise = response.results.sunrise;
+        currentSunriseFormatted = moment(currentSunrise).format("h:mm a");
+        $("#currentSunsetBody").html("Sunrise: " + currentSunriseFormatted + "<br>");
+
+        let currentSunset = response.results.sunset;
+        currentSunsetFormatted = moment(currentSunset).format("h:mm a");
+        $("#currentSunsetBody").append("Sunset: " + currentSunsetFormatted + "<br>");
+
+        let currentNoon = response.results.solar_noon;
+        currentNoonFormatted = moment(currentNoon).format("h:mm a");
+        $("#currentSunsetBody").append("Solar noon: " + currentNoonFormatted + "<br>");
+
+        let currentDaylength = moment(currentSunset).diff(currentSunrise, "hours");
+        $("#currentSunsetBody").append("Day length: " + currentDaylength + " hours<br>");
+
+    });
+    //ajax call for tomorrow's sunset data
+    $.ajax({
+        url: tomorrowSunsetURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log(response);
         $("#tomorrowSunsetHead").text("Tomorrow's Sun Data");
 
         let tomorrowSunrise = response.results.sunrise;
@@ -117,13 +152,33 @@ function sunsetFunction(response) {
         let tomorrowDaylength = moment(tomorrowSunset).diff(tomorrowSunrise, "hours");
         $("#tomorrowSunsetBody").append("Day length: " + tomorrowDaylength + " hours<br>");
     });
+
+    //tomorrow tomorrow ajax call
+    $.ajax({
+        url: tomorrowTomorrowSunsetURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log(response);
+
+        $("#tomorrowTomorrowSunsetHead").text("The Next Day's Sun Data");
+
+        let tomorrowTomorrowSunrise = response.results.sunrise;
+        tomorrowTomorrowSunriseFormatted = moment(tomorrowTomorrowSunrise).format("h:mm a");
+        $("#tomorrowTomorrowSunsetBody").html("Sunrise: " + tomorrowTomorrowSunriseFormatted + "<br>");
+
+        let tomorrowTomorrowSunset = response.results.sunset;
+        tomorrowTomorrowSunsetFormatted = moment(tomorrowTomorrowSunset).format("h:mm a");
+        $("#tomorrowTomorrowSunsetBody").append("Sunset: " + tomorrowTomorrowSunsetFormatted + "<br>");
+
+        let tomorrowTomorrowNoon = response.results.solar_noon;
+        tomorrowTomorrowNoonFormatted = moment(tomorrowTomorrowNoon).format("h:mm a");
+        $("#tomorrowTomorrowSunsetBody").append("Solar noon: " + tomorrowTomorrowNoonFormatted + "<br>");
+
+        let tomorrowTomorrowDaylength = moment(tomorrowTomorrowSunset).diff(tomorrowTomorrowSunrise, "hours");
+        $("#tomorrowTomorrowSunsetBody").append("Day length: " + tomorrowTomorrowDaylength + " hours<br>");
+
+    });
 }
-
-
-
-$(document).ready(function() {
-    initMap(33.7489954,-84.3879824);
-});
 
 function futureWeather(response) {
     
@@ -141,6 +196,8 @@ function futureWeather(response) {
         method: "GET"
     }).done(function (response) {
         console.log(response);
+        let momentOffset = moment();
+        console.log(momentOffset);
         let currentTime = moment().format("YYYY-MM-DD");
         console.log(currentTime + "current time");
         let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
