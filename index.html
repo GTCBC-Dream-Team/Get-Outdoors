@@ -25,8 +25,6 @@
 
     <!--Moment JS-->
     <script src="https://momentjs.com/downloads/moment.js"></script>
-    <script src="https://momentjs.com/downloads/moment-timezone.js"></script>
-    <script src="https://momentjs.com/downloads/moment-timezone-with-data-2012-2022.js"></script>
     <!--- google maps callback-->
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>-->
 
@@ -36,29 +34,29 @@
 <body>
 <!--the user input for location-->
 <div class="header">
-<nav class="lime darken-4">
-    <div class="nav-wrapper #c0ca33 lime darken-2 container">
-        <!-- Links hidden on medium and small screen device -->
-        <div class="input-field">
-            <form>
-                <input id="search" type="search" required="">
-                <label class="label-icon" for="search">
-                    <button id="submit"><i class="material-icons ">search</i></button>
-                </label>
-                <i class="material-icons">close</i>
-            </form>
+    <nav class="lime darken-4">
+        <div class="nav-wrapper #c0ca33 lime darken-2 container">
+            <!-- Links hidden on medium and small screen device -->
+            <div class="input-field">
+                <form>
+                    <input id="search" type="search" placeholder="enter a location" required="">
+                    <label class="label-icon" for="search">
+                        <button id="submit"><i class="material-icons ">search</i></button>
+                    </label>
+                    <i class="material-icons">close</i>
+                </form>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<nav>
-    <div class="nav-wrapper brown darken-2"
-    <span>
+    <nav>
+        <div class="nav-wrapper brown darken-2"
+        <span>
       <!--<a href="#" class="brand-logo right">Logo</a>-->
     <a class="brand-logo left">GET OUTDOORS!<i class="material-icons"
                                                style="margin-left: 4px; font-size:35px;">terrain</i></a></span>
 
-    </div>
+</div>
 </nav>
 
 <main>
@@ -81,124 +79,126 @@
                     </div>
                 </div>
 
-    <!--contains slideshow for weather and daylight hours-->
-    <div class="row">
-        <div class="col s12 12 m12 l12 center-align">
-            <div class="slider">
-                <ul class="slides">
-                    <li class="sliderList">
-                        <div id="left-side" class="col s6">
-                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
-                            <div class="caption left-align">
-                                <!--<h3 id="currentWeatherHead">Left</h3>-->
-                                <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm on the
-                                    left</h5>
-                            </div>
+                <!--contains slideshow for weather and daylight hours-->
+                <div class="row">
+                    <div class="col s12 12 m12 l12 center-align">
+                        <div class="slider">
+                            <ul class="slides">
+                                <li class="sliderList">
+                                    <div id="left-side" class="col s6">
+                                        <img src="assets/images/rain.jpg" alt="">
+                                        <div class="caption left-align">
+                                            <!--<h3 id="currentWeatherHead">Left</h3>-->
+                                            <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm on the
+                                                left</h5>
+                                        </div>
+                                    </div>
+                                    <div id="right-side" class="col s6">
+                                        <img src="assets/images/sunriseSet.jpeg">
+                                        <div class="caption right-align">
+                                            <!--<h3 id="currentSunsetHead">Right</h3>-->
+                                            <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on the
+                                                right!</h5>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                                <li class="sliderList">
+                                    <div id="left-side2" class="col s6">
+                                        <img src="assets/images/rain.jpg" alt="">
+                                        <div class="caption left-align">
+                                            <!--<h3 id="tomorrowWeatherHead">Left</h3>-->
+                                            <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm on the
+                                                left</h5>
+                                        </div>
+                                    </div>
+                                    <div id="right-side2" class="col s6">
+                                        <img src="assets/images/sunriseSet.jpeg">
+                                        <div class="caption right-align">
+                                            <!--<h3 id="tomorrowSunsetHead">Right</h3>-->
+                                            <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm on the
+                                                right!</h5>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="sliderList">
+                                    <div id="left-side3" class="col s6">
+                                        <img src="assets/images/rain.jpg" alt="">
+                                        <div class="caption left-align">
+                                            <!--<h3 id="tomorrowTomorrowWeatherHead">Left</h3>-->
+                                            <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">Yep I'm on
+                                                the left</h5>
+                                        </div>
+                                    </div>
+                                    <div id="right-side3" class="col s6">
+                                        <img src="assets/images/sunriseSet.jpeg">
+                                        <div class="caption right-align">
+                                            <!--<h3 id="tomorrowTomorrowSunsetHead">Right</h3>-->
+                                            <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">And I'm on
+                                                the right!</h5>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
                         </div>
-                        <div id="right-side" class="col s6">
-                            <img src="http://lorempixel.com/580/250/nature/2">
-                            <div class="caption right-align">
-                                <!--<h3 id="currentSunsetHead">Right</h3>-->
-                                <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on the
-                                    right!</h5>
-                            </div>
-                        </div>
-                    </li>
+                    </div>
+
+                    <br/>
+                    <br/>
 
 
-                    <li class="sliderList">
-                        <div id="left-side2" class="col s6">
-                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
-                            <div class="caption left-align">
-                                <!--<h3 id="tomorrowWeatherHead">Left</h3>-->
-                                <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm on the
-                                    left</h5>
-                            </div>
-                        </div>
-                        <div id="right-side2" class="col s6">
-                            <img src="http://lorempixel.com/580/250/nature/2">
-                            <div class="caption right-align">
-                                <!--<h3 id="tomorrowSunsetHead">Right</h3>-->
-                                <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm on the
-                                    right!</h5>
-                            </div>
-                        </div>
-                    </li>
+                    <!--dropdown menu-->
+                    <!--<div class="row"> <a id="btnBackColor" class='dropdown-button btn' href='#' data-activates='dropdown1'><i class="material-icons right">arrow_drop_down</i>Please Select</a>-->
 
-                    <li class="sliderList">
-                        <div id="left-side3" class="col s6">
-                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
-                            <div class="caption left-align">
-                                <!--<h3 id="tomorrowTomorrowWeatherHead">Left</h3>-->
-                                <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">Yep I'm on
-                                    the left</h5>
-                            </div>
-                        </div>
-                        <div id="right-side3" class="col s6">
-                            <img src="http://lorempixel.com/580/250/nature/2">
-                            <div class="caption right-align">
-                                <!--<h3 id="tomorrowTomorrowSunsetHead">Right</h3>-->
-                                <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">And I'm on
-                                    the right!</h5>
-                            </div>
-                        </div>
-                    </li>
+                    <!-- Dropdown Structure -->
+                    <!--<ul id='dropdown1' class='dropdown-content'>-->
+                    <!--<li><a href="#!">one</a></li>-->
+                    <!--<li><a href="#!">two</a></li>-->
+                    <!--<li class="divider"></li>-->
+                    <!--<li><a href="#!">three</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
 
-                </ul>
-            </div>
-        </div>
-
-
-
-        <!--dropdown menu-->
-        <!--<div class="row"> <a id="btnBackColor" class='dropdown-button btn' href='#' data-activates='dropdown1'><i class="material-icons right">arrow_drop_down</i>Please Select</a>-->
-
-            <!-- Dropdown Structure -->
-            <!--<ul id='dropdown1' class='dropdown-content'>-->
-                <!--<li><a href="#!">one</a></li>-->
-                <!--<li><a href="#!">two</a></li>-->
-                <!--<li class="divider"></li>-->
-                <!--<li><a href="#!">three</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-
-    <!--<div class="container">-->
-            <!--<div class="card">-->
-                <!--<div class="card-image waves-effect waves-block waves-light"> <img class="activator" src="terrain.jpg"> </div>-->
-                <!--<div class="card-content"> <span class="card-title activator grey-text text-darken-4">Trail Mix Recipes<i class="material-icons right">more_vert</i></span>-->
-                <!--</div>-->
-                <!--<div class="card-reveal"> <span class="card-title grey-text text-darken-4">Taste Bud Approved<i class="material-icons right">close</i></span>-->
+                    <!--<div class="container">-->
+                    <!--<div class="card">-->
+                    <!--<div class="card-image waves-effect waves-block waves-light"> <img class="activator" src="terrain.jpg"> </div>-->
+                    <!--<div class="card-content"> <span class="card-title activator grey-text text-darken-4">Trail Mix Recipes<i class="material-icons right">more_vert</i></span>-->
+                    <!--</div>-->
+                    <!--<div class="card-reveal"> <span class="card-title grey-text text-darken-4">Taste Bud Approved<i class="material-icons right">close</i></span>-->
                     <!--<br/>-->
                     <!--<h6><b>Choco-Nuts:</b></h6>-->
                     <!--<p>Mix equal parts peanuts, almonds, cashews. Add dried fruits (mangos, blueberries, pineapple and raisins) and M&M's. Place in a ziplock bag and shake until mixed.</p>-->
                     <!--<br/>-->
                     <!--<h6><b>No Bake Trail Mix Bars:</b></h6>-->
                     <!--<p> 1 cup of raw oats. 1/4 cup peanuts, 1/3 cup almonds, 2 to 4 tablespoons of honey, cinnamon and nutmeg to taste. Stick in freezer over night.</p>-->
-                <!--<br/>-->
+                    <!--<br/>-->
                     <!--<h6><b>Lay It On Me</b></h6>-->
                     <!--<p>Mix 1/3 cup of sesame seeds, 2 cups pretzels, 1/2 cup wasabi peas, 1/2 cup almonds and 1/3 cup crystalized ginger or 1 tablespoon powder.</p>-->
                     <!--<br/>-->
                     <!--<h6><b>Sunsational Mix</b></h6>-->
                     <!--Mix 1/2 cup almonds, 1/3 cup pecans, 2 cups popcorn, 1/4 tablespoon cayenne pepper, garlic powder to taste, 1 teaspoonchili powder and 1/4 teaspoon ground cumin.-->
-    <!--</div>-->
+                    <!--</div>-->
 
 
-    <!--&lt;!&ndash;dropdown menu for activity selection&ndash;&gt;-->
-    <!--<div class="row">-->
-        <!--<form>-->
-            <!--<div class="row">-->
-                <!--<div class="input-field">-->
+                    <!--&lt;!&ndash;dropdown menu for activity selection&ndash;&gt;-->
+                    <!--<div class="row">-->
+                    <!--<form>-->
+                    <!--<div class="row">-->
+                    <!--<div class="input-field">-->
                     <!--<input id="textarea2" type="text" class="materialize-textarea">-->
                     <!--<button id="submit2">submit</button>-->
                     <!--<label for="textarea2">Activities (will eventually be a dropdown)</label>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
 
-    <h1>MAPS</h1>
+                    <h1>MAPS</h1>
 
-    <div id="map" class="responsive-img"></div>
+                    <div id="map" class="responsive-img"></div>
 
 </main>
 
@@ -211,7 +211,7 @@
                 <h5 class="white-text">© 2017 GET OUTDOORS</h5>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text text-responsive">Quick Tutorials</h5>
+                <h5 class="white-text">Quick Tutorials</h5>
                 <ul>
                     <li><a class="modal-trigger waves-effect waves-light btn lime darken-4" href="#modal2">Nature's Sun Dial</a></li>
                     <br/>
@@ -220,61 +220,64 @@
             </div>
         </div>
     </footer>
+</footer>
 
-    <!-- Modal Structure -->
+<!-- Modal Structure -->
 
-    <div id="modal2" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Five Easy Steps</h4>
-            <h6><b>Step 1: Gather your tools</b></h6>
-            <p>Straight stick (about two feet long) and a handful of pebbles.</p>
-            <h6><b>Step 2: Find a Sunny Area</b></h6>
-            <p>Look for a place that gets full sun exposure all day long. Push one end of the stick into the grass or earth.</p>
-            <p>If you don’t have access to a grassy area with soft earth, you can improvise.Fill a small bucket with sand or gravel and plant the stick directly in the center of it.</p>
-            <ul><b>Note:</b>
-                <li>• If you live in the Northern Hemisphere, slightly slant the stick toward the North.</li>
-                <li>• If you live in the Southern Hemisphere, slight it slightly toward the South.</li>
-            </ul>
-            <h6><b>Step 3: Start at 7:00AM</b></h6>
-            <p>If you want to complete the sundial in a single day, begin in the morning after the sun has fully risen. Survey the stick at 7:00 a.m. As the sun shines down on it, the stick will cast a shadow. Use one of your pebbles to mark the place where the shadow falls on the ground.</p>
-            <h6><b>Step 4: Return to the stick every hour</b></h6>
-            <p>Set an alarm or keep an eye on your watch so that you can update the dial at the top of every hour. Return at 8:00 a.m. and use another pebble to mark where the stick’s shadow falls on the ground. Do the same thing at 9:00 a.m., 10:00 a.m. and so on.
-                If you want the greatest amount of accuracy, use chalk to mark each pebble with the exact time you placed it on the ground.
-                The shadow will move in a clockwise direction.</p>
-            <h6><b>Step 5: Continue Process Until Dusk</b></h6>
-            <p>Return every hour and mark it with a pebble on the ground. Do this until there is no more sunlight left in the day. Your sundial will be complete at day’s end. As long as the sun is shining, you can use this simple device to tell what time of the day it is.</p>
-        </div>
-        <div class="modal-footer"> <a href="#!"class="modal-action modal-close waves-effect waves-green btn-flat ">Close<i class="material-icons right">close</i></a></div>
+<div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Five Easy Steps</h4>
+        <h6><b>Step 1: Gather your tools</b></h6>
+        <p>Straight stick (about two feet long) and a handful of pebbles.</p>
+        <br/>
+        <h6><b>Step 2: Find a Sunny Area</b></h6>
+        <p>Look for a place that gets full sun exposure all day long. Push one end of the stick into the grass or earth. If you don’t have access to a grassy area with soft earth, you can improvise.Fill a small bucket with sand or gravel and plant the stick directly in the center of it.</p>
+        <br/>
+        <ul><b>Note:</b>
+            <li>• If you live in the Northern Hemisphere, slightly slant the stick toward the North.</li>
+            <li>• If you live in the Southern Hemisphere, slight it slightly toward the South.</li>
+        </ul>
+        <h6><b>Step 3: Start at 7:00AM</b></h6>
+        <p>If you want to complete the sundial in a single day, begin in the morning after the sun has fully risen. Survey the stick at 7:00 a.m. As the sun shines down on it, the stick will cast a shadow. Use one of your pebbles to mark the place where the shadow falls on the ground.</p>
+        <h6><b>Step 4: Return to the stick every hour</b></h6>
+        <p>Set an alarm or keep an eye on your watch so that you can update the dial at the top of every hour. Return at 8:00 a.m. and use another pebble to mark where the stick’s shadow falls on the ground. Do the same thing at 9:00 a.m., 10:00 a.m. and so on.
+            If you want the greatest amount of accuracy, use chalk to mark each pebble with the exact time you placed it on the ground.
+            The shadow will move in a clockwise direction.</p>
+        <h6><b>Step 5: Continue Process Until Dusk</b></h6>
+        <p>Return every hour and mark it with a pebble on the ground. Do this until there is no more sunlight left in the day. Your sundial will be complete at day’s end. As long as the sun is shining, you can use this simple device to tell what time of the day it is.</p>
     </div>
-    <div id="modal3" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Star Dial</h4>
-            <h6><b>Step 1: Gather your tools</b></h6>
-            <p>Straight stick (about two feet long) and a handful of pebbles.</p>
-            <h6><b>Step 2: Find a Sunny Area</b></h6>
-            <p>Look for a place that gets full sun exposure all day long. Push one end of the stick into the grass or earth.</p>
-            <p>If you don’t have access to a grassy area with soft earth, you can improvise.Fill a small bucket with sand or gravel and plant the stick directly in the center of it.</p>
-            <ul><b>Note:</b>
-                <li>• If you live in the Northern Hemisphere, slightly slant the stick toward the North.</li>
-                <li>• If you live in the Southern Hemisphere, slight it slightly toward the South.</li>
-            </ul>
-            <h6><b>Step 3: Start at 7:00AM</b></h6>
-            <p>If you want to complete the sundial in a single day, begin in the morning after the sun has fully risen. Survey the stick at 7:00 a.m. As the sun shines down on it, the stick will cast a shadow. Use one of your pebbles to mark the place where the shadow falls on the ground.</p>
-            <h6><b>Step 4: Return to the stick every hour</b></h6>
-            <p>Set an alarm or keep an eye on your watch so that you can update the dial at the top of every hour. Return at 8:00 a.m. and use another pebble to mark where the stick’s shadow falls on the ground. Do the same thing at 9:00 a.m., 10:00 a.m. and so on.
-                If you want the greatest amount of accuracy, use chalk to mark each pebble with the exact time you placed it on the ground.
-                The shadow will move in a clockwise direction.</p>
-            <h6><b>Step 5: Continue Process Until Dusk</b></h6>
-            <p>Return every hour and mark it with a pebble on the ground. Do this until there is no more sunlight left in the day. Your sundial will be complete at day’s end. As long as the sun is shining, you can use this simple device to tell what time of the day it is.</p>
-        </div>
-        <div class="modal-footer"> <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close<i class="material-icons right">close</i></a> </div>
+    <div class="modal-footer"> <a href="#!"class="modal-action modal-close waves-effect waves-green btn-flat ">Close<i class="material-icons right">close</i></a></div>
+</div>
+<div id="modal3" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Star Dial</h4>
+        <h6><b>Find the Big Dipper and the North Star</b></h6>
+        <p>If you picture a clock with the North Star at its center, and draw an imaginary line starting from the North Star through the 2 pointer stars of the Big Dipper – Dubhe and Merak. Assume that this is the hour hand of your imaginary star clock</p>
+        <br/>
+        <h6><b>Unlike a Regular Analog Clock Face</b></h6>
+        <p>The clock you just created in the sky is a 24-hour clock. Unlike on a regular analog clock face where an hour takes up 30 degrees of a full circle, the imaginary hour hand on the star clock moves only 15 degrees per hour. What's more, this hour hand moves counter-clockwise.</p>
+        <p>Draw another imaginary line straight up from the North Star. This line will mark midnight or the passing of 24 hours.</p>
+        <br/>
+        <h6><b>Telling Time</b></h6>
+        <p>To tell time, look at where the hour hand points to in relation to the reference line. Remember, each 15-degree movement corresponds with the passing of 1 hour.
+            <br/>
+        <p>Now, look at the calendar for the date. If it is March 6, you do not need to do any calculations. The time on your imaginary clock will be the actual time. For example, if the pointer hour hand points straight to the top of the imaginary clock, the time will be midnight. If it points 30 degrees to the right of the reference line, the time would be 22:00 or 10 pm.</p>
+        <br/>
+        <h6><b>Calculating Times for Different Months</b></h6>
+        <p>To calculate times for different months, you will need to do the following calculation: Time = Dipper Time – 2 X the number of months since March 6.</p>
+        <br/>
+        <h6><b>Time as an Estimate</b></h6>
+        <p>The time you get will be a rough estimate and may be off by about 30 minutes as compared to a clock. To account for Daylight Savings Time (DST), add 1 hour to the calculation in the months that DST is in place at your location.</p>
+        <br/>
     </div>
+    <div class="modal-footer"> <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close<i class="material-icons right">close</i></a></div>
+</div>
 
-    <script src="assets/js/app.js"></script>
-    <!--<script src="assets/js/openWeatherAPI.js"></script>-->
-    <!--<script src="assets/js/sunsetAPI.js"></script>-->
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&libraries=places&callback=initMap">
-    </script>
+<script src="assets/js/app.js"></script>
+<!--<script src="assets/js/openWeatherAPI.js"></script>-->
+<!--<script src="assets/js/sunsetAPI.js"></script>-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&libraries=places&callback=initMap">
+</script>
 </body>
 </html>
