@@ -10,10 +10,17 @@
     <!-- Compiled and minified CSS for materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+
+    <!-- Compiled and minified JavaScript for materialize-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&libraries=places"></script>
+
+
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+
+
 
     <!--Materialize JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
@@ -22,6 +29,13 @@
     <!--Team Stylesheet-->
     <link rel="stylesheet" href="assets/css/compass.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>-->
+<!--Team JS-->
+    <script src="assets/js/app.js"></script>
+    <!--Weather API-->
+    <script src="assets/js/weatherAPI.js"></script>
+
 
     <!--Moment JS-->
     <script src="https://momentjs.com/downloads/moment.js"></script>
@@ -33,11 +47,14 @@
 </head>
 <body>
 <!--the user input for location-->
+
 <div class="header">
+
 <nav class="lime darken-4">
     <div class="nav-wrapper #c0ca33 lime darken-2 container">
         <!-- Links hidden on medium and small screen device -->
         <div class="input-field">
+
             <form>
                 <input id="search" type="search" required="">
                 <label class="label-icon" for="search">
@@ -45,21 +62,34 @@
                 </label>
                 <i class="material-icons">close</i>
             </form>
+
+            <input id="search" type="search" required="">
+            <label class="label-icon" for="search"><i class="material-icons ">language</i></label>
+
+            <i class="material-icons">close</i>
+
         </div>
     </div>
 </nav>
 
 <nav>
+
     <div class="nav-wrapper brown darken-2"
     <span>
       <!--<a href="#" class="brand-logo right">Logo</a>-->
     <a class="brand-logo left">GET OUTDOORS!<i class="material-icons"
                                                style="margin-left: 4px; font-size:35px;">terrain</i></a></span>
 
+    <div class="nav-wrapper brown darken-2"<span>
+      <!--<a href="#" class="brand-logo right">Logo</a>-->
+    <a class="brand-logo left">GET OUTDOORS!<i class="material-icons" style="margin-left: 4px; font-size:35px;">terrain</i></a></span>
+
+
     </div>
 </nav>
 
 <main>
+<<<<<<< HEAD
     <br>
     <div class="container">
         <div class="section">
@@ -79,11 +109,15 @@
                     </div>
                 </div>
 
+   <br/>
+
+
     <!--contains slideshow for weather and daylight hours-->
     <div class="row">
         <div class="col s12 12 m12 l12 center-align">
             <div class="slider">
                 <ul class="slides">
+
                     <li class="sliderList">
                         <div id="left-side" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/1" alt="">
@@ -92,16 +126,30 @@
                                 <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm on the
                                     left</h5>
                             </div>
+          <li>
+                        <div id="left-side" class="col s6">
+                        <img src="http://lorempixel.com/580/250/nature/1" alt="">
+                        <div class="caption left-align">
+                            <h3>Left</h3>
+                            <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+                        </div>
+
                         </div>
                         <div id="right-side" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
+
                                 <!--<h3 id="currentSunsetHead">Right</h3>-->
                                 <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on the
                                     right!</h5>
+
+                                <h3>Right</h3>
+                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+
                             </div>
                         </div>
                     </li>
+
 
 
                     <li class="sliderList">
@@ -111,17 +159,32 @@
                                 <!--<h3 id="tomorrowWeatherHead">Left</h3>-->
                                 <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm on the
                                     left</h5>
+
+
+                    <li>
+                        <div id="left-side2" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
+                            <div class="caption left-align">
+                                <h3>Left</h3>
+                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+
                             </div>
                         </div>
                         <div id="right-side2" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
+
                                 <!--<h3 id="tomorrowSunsetHead">Right</h3>-->
                                 <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm on the
                                     right!</h5>
+
+                                <h3>Right</h3>
+                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+
                             </div>
                         </div>
                     </li>
+
 
                     <li class="sliderList">
                         <div id="left-side3" class="col s6">
@@ -130,14 +193,27 @@
                                 <!--<h3 id="tomorrowTomorrowWeatherHead">Left</h3>-->
                                 <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">Yep I'm on
                                     the left</h5>
+
+                    <li>
+                        <div id="left-side3" class="col s6">
+                            <img src="http://lorempixel.com/580/250/nature/1" alt="">
+                            <div class="caption left-align">
+                                <h3>Left</h3>
+                                <h5 class="light grey-text text-lighten-3">Yep I'm on the left</h5>
+
                             </div>
                         </div>
                         <div id="right-side3" class="col s6">
                             <img src="http://lorempixel.com/580/250/nature/2">
                             <div class="caption right-align">
+
                                 <!--<h3 id="tomorrowTomorrowSunsetHead">Right</h3>-->
                                 <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">And I'm on
                                     the right!</h5>
+
+                                <h3>Right</h3>
+                                <h5 class="light grey-text text-lighten-3">And I'm on the right!</h5>
+
                             </div>
                         </div>
                     </li>
@@ -145,6 +221,7 @@
                 </ul>
             </div>
         </div>
+
 
 
 
@@ -277,5 +354,64 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&libraries=places&callback=initMap">
     </script>
+
+<!--Compass-->
+        <!--<div class="col s3 m5 l4 right-align"></div>-->
+        <!--<section id="compass body" class="right">-->
+            <!--<div id="compass">-->
+                <!--<span>N</span>-->
+                <!--<span>E</span>-->
+                <!--<span>S</span>-->
+                <!--<span>W</span>-->
+                <!--<div id="pointer"></div>-->
+            <!--</div>-->
+    <!--</section>-->
+    <!--</div>-->
+
+
+    <!--dropdown menu for activity selection-->
+    <!--<div class="row">-->
+        <!--<form>-->
+            <!--<div class="row">-->
+                <!--<div class="input-field">-->
+                    <!--<textarea id="textarea2" class="materialize-textarea"></textarea>-->
+                    <!--<label for="textarea2">Activities (will eventually be a dropdown)</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+
+    <div class="row">
+        <div class="col l12"><img class="responsive-img img cover" src="spot.jpg"></div>
+    </div>
+
+
+    <div class="row">Contains additional information</div>
+</main>
+<footer class="page-footer brown darken-1">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">SUN DIAL TUTORIAL</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">NIGHT DIAL TUTORIAL</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright Get Outdoors
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
