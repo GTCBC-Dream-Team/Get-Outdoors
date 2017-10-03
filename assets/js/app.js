@@ -50,6 +50,7 @@ $("#submit").on("click", function () {
         $(".slider").css("display", "block");
         $(".section").css("display", "block");
         $("#map").css("display", "block");
+        document.getElementById("icons").scrollIntoView();
         $.ajax({
             url: queryURL,
             method: "GET",
