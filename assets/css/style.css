@@ -97,13 +97,13 @@ h5 {
     position-left: 0;
     margin-bottom: 200px;*/
 
-    margin-left: 5%;
-    margin-right:5%;
+    margin-left: 9%;
+    /*margin-right: 8%;*/
     height: 50%;
     width: 80%;
     z-index: 10;
     position: absolute;
-    position-left: 0;
+    left: 0;
     margin-bottom: 200px;
 }
 
