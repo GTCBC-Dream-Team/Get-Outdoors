@@ -280,9 +280,11 @@ function futureWeather(response) {
             todayMinTemp += todayList[i].main.temp_min;
             if ( (i + 1) === todayList.length) {
                 todayMaxTemp /= todayList.length;
-                console.log(todayMaxTemp);
+                let todayMaxF = (todayMaxTemp - 273.15) * 1.80 + 32;
+                console.log(todayMaxF);
                 todayMinTemp /= todayList.length;
-                console.log(todayMinTemp);
+                let todayMinF = (todayMinTemp - 273.15) * 1.80 + 32;
+                console.log(todayMinF);
             }
         }
     
@@ -294,9 +296,11 @@ function futureWeather(response) {
             tomorrowMinTemp += tomorrowList[i].main.temp_min;
             if ( (i + 1) === tomorrowList.length) {
                 tomorrowMaxTemp /= tomorrowList.length;
-                console.log(tomorrowMaxTemp);
+                let tomorrowMaxF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
+                console.log(tomorrowMaxF);
                 tomorrowMinTemp /= tomorrowList.length;
-                console.log(tomorrowMinTemp);
+                let tomorrowMinF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
+                console.log(tomorrowMinF);
             }
         }
         
@@ -308,9 +312,11 @@ function futureWeather(response) {
             tomorrowTomorrowMinTemp += tomorrowTomorrowList[i].main.temp_min;
             if ( (i + 1) === tomorrowTomorrowList.length) {
                 tomorrowTomorrowMaxTemp /= tomorrowTomorrowList.length;
-                console.log(tomorrowTomorrowMaxTemp);
+                let tomorrowTomorrowMaxF = (tomorrowTomorrowMaxTemp - 273.15) * 1.80 + 32;
+                console.log(tomorrowTomorrowMaxF);
                 tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
-                console.log(tomorrowTomorrowMinTemp);
+                let tomorrowTomorrowMinF = (tomorrowTomorrowMinTemp - 273.15) * 1.80 + 32;
+                console.log(tomorrowTomorrowMinF);
             }
         }
         
