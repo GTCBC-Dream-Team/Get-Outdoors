@@ -121,6 +121,17 @@ function sunsetFunction(response) {
     });
 }
 
+
+// <<<<<<< HEAD
+$(document).ready(function() {
+    initMap(33.7489954,-84.3879824);
+});
+// =======
+// $(document).ready(function () {
+//     initMap(33.7489954, -84.3879824);
+// })
+// >>>>>>> origin/julie
+
 function futureWeather(response) {
     
     const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
@@ -389,6 +400,7 @@ function createMarker(place) {
 $(document).ready(function () {
     initMap(33.7489954, -84.3879824);
 });
+
 
 //
 // function hey(name) {
