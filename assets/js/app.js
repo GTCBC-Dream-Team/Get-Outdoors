@@ -8,6 +8,10 @@
 
     // initMap(33.7489954, -84.3879824);
 
+$("#download-button").on("click",function(){
+    $("#search").focus();
+});
+
 
 $(document).ready(function () {
     // Init Carousel
@@ -39,61 +43,64 @@ function myhelper(lat, lng) {
 
 $("#submit").on("click", function () {
     event.preventDefault();
-    let address = $("#search").val();
-    const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
-    $(".slider").css("display", "block");
-    $(".section").css("display", "block");
-    $("#map").css("display", "block");
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        success: function (response) {
+    if ($("#search").val() != "") {
+        $("#download-button").text("NEW LOCATION");
+        let address = $("#search").val();
+        const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
+        $(".slider").css("display", "block");
+        $(".section").css("display", "block");
+        $("#map").css("display", "block");
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+            success: function (response) {
+                let lat = response.results[0].geometry.location.lat;
+                let lng = response.results[0].geometry.location.lng;
+                const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+                $.ajax({
+                    url: currentWeatherURL,
+                    method: "GET",
+                    success: sunsetFunction(response)
+                }).done(function (response) {
+                    console.log(response);
+
+                    //shows current weather state
+                    var currentWeatherState = response.weather[0].main;
+                    console.log("current weather state: " + currentWeatherState);
+                    $("#currentWeatherHead").html("Today's Weather");
+                    $("#currentWeatherBody").html("Today:<br><br>" + currentWeatherState + "<br>");
+
+                    //shows current temperature
+                    var tempKelvin = response.main.temp;
+                    var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
+                    tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
+                    console.log("current temperature: " + tempFahrenheit + "F");
+                    $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
+
+                    //shows today's min temperature
+                    var minKelvin = response.main.temp_min;
+                    var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
+                    minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
+                    console.log("min temperature: " + minFahrenheit + "F");
+                    $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");
+
+                    //shows today's max temperature
+                    var maxKelvin = response.main.temp_max;
+                    var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
+                    maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
+                    console.log("max temperature: " + maxFahrenheit + "F");
+                    $("#currentWeatherBody").append("Max: " + maxFahrenheit + "<br>");
+                });
+            }
+        }).done(function (response) {
+            console.log(response.results[0].geometry.location.lat);
+            console.log(response.results[0].geometry.location.lng);
             let lat = response.results[0].geometry.location.lat;
             let lng = response.results[0].geometry.location.lng;
-            const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
-            $.ajax({
-                url: currentWeatherURL,
-                method: "GET",
-                success: sunsetFunction(response)
-            }).done(function (response) {
-                console.log(response);
-                
-                //shows current weather state
-                var currentWeatherState = response.weather[0].main;
-                console.log("current weather state: " + currentWeatherState);
-                $("#currentWeatherHead").html("Today's Weather");
-                $("#currentWeatherBody").html("Today:<br><br>" + currentWeatherState + "<br>");
-                
-                //shows current temperature
-                var tempKelvin = response.main.temp;
-                var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
-                tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
-                console.log("current temperature: " + tempFahrenheit + "F");
-                $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
-                
-                //shows today's min temperature
-                var minKelvin = response.main.temp_min;
-                var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
-                minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
-                console.log("min temperature: " + minFahrenheit + "F");
-                $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");
-                
-                //shows today's max temperature
-                var maxKelvin = response.main.temp_max;
-                var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
-                maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
-                console.log("max temperature: " + maxFahrenheit + "F");
-                $("#currentWeatherBody").append("Max: " + maxFahrenheit + "<br>");
-            });
-        }
-    }).done(function (response) {
-        console.log(response.results[0].geometry.location.lat);
-        console.log(response.results[0].geometry.location.lng);
-        let lat = response.results[0].geometry.location.lat;
-        let lng = response.results[0].geometry.location.lng;
-        myhelper(lat, lng);
-        initMap(lat, lng);
-    })
+            myhelper(lat, lng);
+            initMap(lat, lng);
+        })
+    }
 });
 
 function sunsetFunction(response) {
