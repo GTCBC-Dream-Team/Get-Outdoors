@@ -56,7 +56,7 @@ $("#submit").on("click", function () {
                 var currentWeatherState = response.weather[0].main;
                 console.log("current weather state: " + currentWeatherState);
                 $("#currentWeatherHead").html("Today's Weather");
-                $("#currentWeatherBody").html(currentWeatherState + "<br>");
+                $("#currentWeatherBody").html("Today:<br><br>" + currentWeatherState + "<br>");
                 
                 //shows current temperature
                 var tempKelvin = response.main.temp;
@@ -115,7 +115,7 @@ function sunsetFunction(response) {
         
         let currentSunrise = response.results.sunrise;
         currentSunriseFormatted = moment(currentSunrise).format("h:mm a");
-        $("#currentSunsetBody").html("Sunrise: " + currentSunriseFormatted + "<br>");
+        $("#currentSunsetBody").html("Today:<br><br>Sunrise: " + currentSunriseFormatted + "<br>");
 
         let currentSunset = response.results.sunset;
         currentSunsetFormatted = moment(currentSunset).format("h:mm a");
@@ -139,7 +139,7 @@ function sunsetFunction(response) {
 
         let tomorrowSunrise = response.results.sunrise;
         tomorrowSunriseFormatted = moment(tomorrowSunrise).format("h:mm a");
-        $("#tomorrowSunsetBody").html("Sunrise: " + tomorrowSunriseFormatted + "<br>");
+        $("#tomorrowSunsetBody").html("Tomorrow:<br><br>Sunrise: " + tomorrowSunriseFormatted + "<br>");
 
         let tomorrowSunset = response.results.sunset;
         tomorrowSunsetFormatted = moment(tomorrowSunset).format("h:mm a");
@@ -164,7 +164,7 @@ function sunsetFunction(response) {
 
         let tomorrowTomorrowSunrise = response.results.sunrise;
         tomorrowTomorrowSunriseFormatted = moment(tomorrowTomorrowSunrise).format("h:mm a");
-        $("#tomorrowTomorrowSunsetBody").html("Sunrise: " + tomorrowTomorrowSunriseFormatted + "<br>");
+        $("#tomorrowTomorrowSunsetBody").html("The Next Day:<br><br>Sunrise: " + tomorrowTomorrowSunriseFormatted + "<br>");
 
         let tomorrowTomorrowSunset = response.results.sunset;
         tomorrowTomorrowSunsetFormatted = moment(tomorrowTomorrowSunset).format("h:mm a");
@@ -311,29 +311,29 @@ function futureWeather(response) {
         //tomorrowList
         if (tomorrowClear.length > tomorrowRain.length && tomorrowClear.length > tomorrowClouds.length) {
             console.log("the average weather is clear");
-            $("#tomorrowWeatherBody").html("Clear<br>");
+            $("#tomorrowWeatherBody").html("Tomorrow:<br><br>Clear<br>");
         }
         else if (tomorrowRain.length > tomorrowClear && tomorrowRain.length > tomorrowClouds.length) {
             console.log("the average weather is rainy");
-            $("#tomorrowWeatherBody").html("Rain<br>");
+            $("#tomorrowWeatherBody").html("Tomorrow:<br><br>Rain<br>");
         }
         else {
             console.log("the average weather is cloudy");
-            $("#tomorrowWeatherBody").html("Clouds<br>");
+            $("#tomorrowWeatherBody").html("Tomorrow:<br><br>Clouds<br>");
         }
 
         //tomorrowTomorrowList
         if (tomorrowTomorrowClear.length > tomorrowTomorrowRain.length && tomorrowTomorrowClear.length > tomorrowTomorrowClouds.length) {
             console.log("the average weather is clear");
-            $("#tomorrowTomorrowWeatherBody").html("Clear<br>");
+            $("#tomorrowTomorrowWeatherBody").html("The Next Day:<br><br>Clear<br>");
         }
         else if (tomorrowTomorrowRain.length > tomorrowTomorrowClear && tomorrowTomorrowRain.length > tomorrowTomorrowClouds.length) {
             console.log("the average weather is rainy");
-            $("#tomorrowTomorrowWeatherBody").html("Rain<br>");
+            $("#tomorrowTomorrowWeatherBody").html("The Next Day:<br><br>Rain<br>");
         }
         else {
             console.log("the average weather is cloudy");
-            $("#tomorrowTomorrowWeatherBody").html("Clouds<br>");
+            $("#tomorrowTomorrowWeatherBody").html("The Next Day:<br><br>Clouds<br>");
         }
 
         //we also want to get the average high and low temperatures for the day
