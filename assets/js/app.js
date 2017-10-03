@@ -137,6 +137,8 @@ function futureWeather(response) {
         method: "GET"
     }).done(function (response) {
         console.log(response);
+        let momentOffset = moment();
+        console.log(momentOffset);
         let currentTime = moment().format("YYYY-MM-DD");
         console.log(currentTime + "current time");
         let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
