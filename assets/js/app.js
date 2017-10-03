@@ -6,6 +6,9 @@
 
 //pass lat and long variable into google maps
 
+    // initMap(33.7489954, -84.3879824);
+
+
 $(document).ready(function () {
     // Init Carousel
     $('.carousel').carousel();
@@ -38,6 +41,9 @@ $("#submit").on("click", function () {
     event.preventDefault();
     let address = $("#search").val();
     const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
+    $(".slider").css("display", "block");
+    $(".section").css("display", "block");
+    $("#map").css("display", "block");
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -178,6 +184,7 @@ function sunsetFunction(response) {
         $("#tomorrowTomorrowSunsetBody").append("Day length: " + tomorrowTomorrowDaylength + " hours<br>");
 
     });
+    $("#search").val("");
 }
 
 function futureWeather(response) {
@@ -417,7 +424,7 @@ function initMap(lat, lng) {
     
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
-        zoom: 15
+        zoom: 12
     });
     let request = {
         location: location,
@@ -451,9 +458,6 @@ function createMarker(place) {
     });
 }
 
-$(document).ready(function () {
-    initMap(33.7489954, -84.3879824);
-});
 
 
 //
