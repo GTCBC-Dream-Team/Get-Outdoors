@@ -5,6 +5,10 @@ html{
     height: 100%;
 }
 
+.slider-fill{
+    height: fill;
+}
+
 
 body {
     display: flex;
@@ -134,6 +138,10 @@ footer {
 
 #left-side, #left-side2, #left-side3, #right-side, #right-side2, #right-side3 {
     position: relative;
+    height: 100%;
+    width: 50%;
+    margin:0;
+    padding: 2px;
 }
 
 
