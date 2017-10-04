@@ -57,7 +57,7 @@ $("#submit").on("click", function () {
             success: function (response) {
                 let lat = response.results[0].geometry.location.lat;
                 let lng = response.results[0].geometry.location.lng;
-                const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+                const currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
                 $.ajax({
                     url: currentWeatherURL,
                     method: "GET",
@@ -200,7 +200,7 @@ function futureWeather(response) {
     const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
     let lat = response.results[0].geometry.location.lat;
     let lng = response.results[0].geometry.location.lng;
-    const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+    const futureWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
     
     let todayList = [];
     let tomorrowList = [];

@@ -96,13 +96,14 @@
             </div>
 
             <!--contains slideshow for weather and daylight hours-->
+
             <div class="row">
-                <div class="col s12 12 m12 l12 center-align">
+                <div class="col s12 12 m12 l12 center-align left-side">
                     <div class="slider">
                         <ul class="slides">
-                            <li class="sliderList">
+                            <li class="sliderList col m">
                                 <div id="left-side" class="col s6">
-                                    <img src="assets/images/rain.jpg" alt="">
+                                    <img class="slider-fill" src="assets/images/rain.jpg" alt="">
                                     <div class="caption left-align">
                                         <!--<h3 id="currentWeatherHead">Left</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm
@@ -111,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div id="right-side" class="col s6">
-                                    <img src="assets/images/sunriseSet.jpeg">
+                                    <img class="slider-fill" src="assets/images/sunriseSet.jpeg">
                                     <div class="caption right-align">
                                         <!--<h3 id="currentSunsetHead">Right</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on
@@ -124,7 +125,7 @@
 
                             <li class="sliderList">
                                 <div id="left-side2" class="col s6">
-                                    <img src="assets/images/rain.jpg" alt="">
+                                    <img class="slider-fill" src="assets/images/rain.jpg" alt="">
                                     <div class="caption left-align">
                                         <!--<h3 id="tomorrowWeatherHead">Left</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm
@@ -133,7 +134,7 @@
                                     </div>
                                 </div>
                                 <div id="right-side2" class="col s6">
-                                    <img src="assets/images/sunriseSet.jpeg">
+                                    <img class="slider-fill" src="assets/images/sunriseSet.jpeg">
                                     <div class="caption right-align">
                                         <!--<h3 id="tomorrowSunsetHead">Right</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm
@@ -145,7 +146,7 @@
 
                             <li class="sliderList">
                                 <div id="left-side3" class="col s6">
-                                    <img src="assets/images/rain.jpg" alt="">
+                                    <img class="slider-fill" src="assets/images/rain.jpg" alt="">
                                     <div class="caption left-align">
                                         <!--<h3 id="tomorrowTomorrowWeatherHead">Left</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">
@@ -154,7 +155,7 @@
                                     </div>
                                 </div>
                                 <div id="right-side3" class="col s6">
-                                    <img src="assets/images/sunriseSet.jpeg">
+                                    <img class="slider-fill" src="assets/images/sunriseSet.jpeg">
                                     <div class="caption right-align">
                                         <!--<h3 id="tomorrowTomorrowSunsetHead">Right</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">
@@ -171,8 +172,8 @@
         </div>
     </div>
 
-    <br/>
 
+    <br/>
     <div class="container">
         <div class="row">
             <div class="col s12 m6 l12">
@@ -196,10 +197,12 @@
                 <ul>
                     <li><a class="modal-trigger waves-effect waves-light btn lime darken-4" href="#modal2">Nature's Sun
                         Dial</a></li>
-                    <br/>
+                    <br>
                     <li><a class="waves-effect waves-light btn modal-trigger lime darken-4" href="#modal3">Star Dial</a>
                     </li>
                 </ul>
+                <br>
+                <p>Powered by: Open Weather API and Sunrise Sunset API</p>
             </div>
         </div>
     </footer>

@@ -40,6 +40,10 @@ footer {
     padding-bottom: 1%;
 }
 
+.slider-fill{
+    height: fill;
+}
+
 .slider {
     height: 50%;
 }
@@ -144,7 +148,8 @@ footer {
 #left-side, #left-side2, #left-side3, #right-side, #right-side2, #right-side3 {
     position: relative;
     height: 100%;
-    width: 0;
+    width: 50%;
+    margin:0;
     padding: 2px;
 }
 

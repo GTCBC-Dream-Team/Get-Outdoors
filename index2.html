@@ -25,39 +25,87 @@
 
     <!--Moment JS-->
     <script src="https://momentjs.com/downloads/moment.js"></script>
-
-
-    <!--Weather API-->
-    <script src="assets/js/openWeatherAPI.js"></script>
-
+    <!--- google maps callback-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>-->
 
     <!--google.maps.Geocoder-->
 
 </head>
 <body>
-<div class="carousel carousel-slider left" data-indicators="true">
-    <div class="carousel-fixed-item left">
-        <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-        <h2>First Panel</h2>
-        <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-        <h2>Second Panel</h2>
-        <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-        <h2>Third Panel</h2>
-        <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-        <h2>Fourth Panel</h2>
-        <p class="white-text">This is your fourth panel</p>
+<div class="row">
+    <div class="col s12 12 m12 l12 center-align">
+        <div class="slider">
+            <ul class="slides">
+                <li class="sliderList full-width">
+                    <div id="left-side" class="col s6">
+                        <img src="assets/images/rain.jpg" alt="">
+                        <div class="caption left-align">
+                            <!--<h3 id="currentWeatherHead">Left</h3>-->
+                            <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm
+                                on the
+                                left</h5>
+                        </div>
+                    </div>
+                    <div id="right-side" class="col s6">
+                        <img src="assets/images/sunriseSet.jpeg">
+                        <div class="caption right-align">
+                            <!--<h3 id="currentSunsetHead">Right</h3>-->
+                            <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on
+                                the
+                                right!</h5>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="sliderList">
+                    <div id="left-side2" class="col s6">
+                        <img src="assets/images/rain.jpg" alt="">
+                        <div class="caption left-align">
+                            <!--<h3 id="tomorrowWeatherHead">Left</h3>-->
+                            <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm
+                                on the
+                                left</h5>
+                        </div>
+                    </div>
+                    <div id="right-side2" class="col s6">
+                        <img src="assets/images/sunriseSet.jpeg">
+                        <div class="caption right-align">
+                            <!--<h3 id="tomorrowSunsetHead">Right</h3>-->
+                            <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm
+                                on the
+                                right!</h5>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="sliderList">
+                    <div id="left-side3" class="col s6">
+                        <img src="assets/images/rain.jpg" alt="">
+                        <div class="caption left-align">
+                            <!--<h3 id="tomorrowTomorrowWeatherHead">Left</h3>-->
+                            <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">
+                                Yep I'm on
+                                the left</h5>
+                        </div>
+                    </div>
+                    <div id="right-side3" class="col s6">
+                        <img src="assets/images/sunriseSet.jpeg">
+                        <div class="caption right-align">
+                            <!--<h3 id="tomorrowTomorrowSunsetHead">Right</h3>-->
+                            <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">
+                                And I'm on
+                                the right!</h5>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </div>
-<script type="text/javascript">
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
-</script>
+</div>
+</div>
+
 </body>
 </html>
