@@ -5,10 +5,6 @@ html{
     height: 100%;
 }
 
-.slider-fill{
-    height: fill;
-}
-
 
 body {
     display: flex;
@@ -42,6 +38,10 @@ h5 {
 footer {
     margin-top: 500px;
     padding-bottom: 1%;
+}
+
+.slider-fill{
+    height: fill;
 }
 
 .slider {
