@@ -473,3 +473,4 @@ function createMarker(place) {
 //use callbacks
 
 //nearby search request
+

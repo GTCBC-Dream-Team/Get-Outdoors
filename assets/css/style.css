@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     height: 100%;
+    position: relative;
 }
 
 main {
@@ -18,19 +19,26 @@ main {
 
 }
 
+footer {
+    margin-top: 500px;
+    padding-bottom: 1%;
+    position: relative;
+    bottom: 0;
+}
+
 div.slider{
     margin-bottom: 1%;
 }
 
-#maps  {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-}
+/*#maps  {*/
+    /*display: flex;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*margin: 0 auto;*/
+/*}*/
 
 #maps2{
     margin: 0 auto;
@@ -114,10 +122,7 @@ h5 {
 
 }
 
-footer {
-    margin-top: 500px;
-    padding-bottom: 1%;
-}
+
 
 
 .responsive-img {
