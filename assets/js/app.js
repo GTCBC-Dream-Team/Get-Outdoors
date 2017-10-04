@@ -87,7 +87,7 @@ $("#submit").on("click", function () {
 
                     //shows today's max temperature
                     var maxKelvin = response.main.temp_max;
-                    var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
+                    var maxFahrenheit = (maxKelvin * 9 / 5) - 459.67;
                     maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
                     console.log("max temperature: " + maxFahrenheit + "F");
                     $("#currentWeatherBody").append("Max: " + maxFahrenheit + " F<br>");
