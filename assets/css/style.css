@@ -44,6 +44,10 @@ h5 {
     font-weight: 600 !important;
 }
 
+.icon-block {
+    position: relative;
+}
+
 .slider-fill{
     height: fill;
 }
