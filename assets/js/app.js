@@ -353,7 +353,7 @@ function futureWeather(response) {
                 tomorrowMaxTemp /= tomorrowList.length;
                 let tomorrowMaxF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
                 tomorrowMaxF = Number(Math.round(tomorrowMaxF+'e1')+'e-1');
-                $("#tomorrowWeatherBody").append("Average Temp: " + tomorrowMaxF + " F<br>");
+                $("#tomorrowWeatherBody").append("Avg. Temp: " + tomorrowMaxF + " F<br>");
                 // tomorrowMinTemp /= tomorrowList.length;
                 // let tomorrowMinF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
                 // tomorrowMinF = Number(Math.round(tomorrowMinF+'e1')+'e-1');
@@ -373,7 +373,7 @@ function futureWeather(response) {
                 tomorrowTomorrowMaxTemp /= tomorrowTomorrowList.length;
                 let tomorrowTomorrowMaxF = (tomorrowTomorrowMaxTemp - 273.15) * 1.80 + 32;
                 tomorrowTomorrowMaxF = Number(Math.round(tomorrowTomorrowMaxF+'e1')+'e-1');
-                $("#tomorrowTomorrowWeatherBody").append("Average Temp: " + tomorrowTomorrowMaxF + " F<br>");
+                $("#tomorrowTomorrowWeatherBody").append("Avg. Temp: " + tomorrowTomorrowMaxF + " F<br>");
                 // tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
                 // let tomorrowTomorrowMinF = (tomorrowTomorrowMinTemp - 273.15) * 1.80 + 32;
                 // tomorrowTomorrowMinF = Number(Math.round(tomorrowTomorrowMinF+'e1')+'e-1');
