@@ -8,6 +8,10 @@
 
     // initMap(33.7489954, -84.3879824);
 
+$("#download-button").on("click",function(){
+    $("#search").focus();
+});
+
 
 $(document).ready(function () {
     // Init Carousel
@@ -39,61 +43,65 @@ function myhelper(lat, lng) {
 
 $("#submit").on("click", function () {
     event.preventDefault();
-    let address = $("#search").val();
-    const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
-    $(".slider").css("display", "block");
-    $(".section").css("display", "block");
-    $("#map").css("display", "block");
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        success: function (response) {
+    if ($("#search").val() != "") {
+        $("#download-button").text("NEW LOCATION");
+        let address = $("#search").val();
+        const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
+        $(".slider").css("display", "block");
+        $(".section").css("display", "block");
+        $("#map").css("display", "block");
+        document.getElementById("icons").scrollIntoView();
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+            success: function (response) {
+                let lat = response.results[0].geometry.location.lat;
+                let lng = response.results[0].geometry.location.lng;
+                const currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+                $.ajax({
+                    url: currentWeatherURL,
+                    method: "GET",
+                    success: sunsetFunction(response)
+                }).done(function (response) {
+                    console.log(response);
+
+                    //shows current weather state
+                    var currentWeatherState = response.weather[0].main;
+                    console.log("current weather state: " + currentWeatherState);
+                    $("#currentWeatherHead").html("Today's Weather");
+                    $("#currentWeatherBody").html("Today:<br><br>" + currentWeatherState + "<br>");
+
+                    //shows current temperature
+                    var tempKelvin = response.main.temp;
+                    var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
+                    tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
+                    console.log("current temperature: " + tempFahrenheit + "F");
+                    $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
+
+                    //shows today's min temperature
+                    var minKelvin = response.main.temp_min;
+                    var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
+                    minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
+                    console.log("min temperature: " + minFahrenheit + "F");
+                    $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");
+
+                    //shows today's max temperature
+                    var maxKelvin = response.main.temp_max;
+                    var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
+                    maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
+                    console.log("max temperature: " + maxFahrenheit + "F");
+                    $("#currentWeatherBody").append("Max: " + maxFahrenheit + "<br>");
+                });
+            }
+        }).done(function (response) {
+            console.log(response.results[0].geometry.location.lat);
+            console.log(response.results[0].geometry.location.lng);
             let lat = response.results[0].geometry.location.lat;
             let lng = response.results[0].geometry.location.lng;
-            const currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
-            $.ajax({
-                url: currentWeatherURL,
-                method: "GET",
-                success: sunsetFunction(response)
-            }).done(function (response) {
-                console.log(response);
-                
-                //shows current weather state
-                var currentWeatherState = response.weather[0].main;
-                console.log("current weather state: " + currentWeatherState);
-                $("#currentWeatherHead").html("Today's Weather");
-                $("#currentWeatherBody").html("Today:<br><br>" + currentWeatherState + "<br>");
-                
-                //shows current temperature
-                var tempKelvin = response.main.temp;
-                var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
-                tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
-                console.log("current temperature: " + tempFahrenheit + "F");
-                $("#currentWeatherBody").append("Current: " + tempFahrenheit + "<br>");
-                
-                //shows today's min temperature
-                var minKelvin = response.main.temp_min;
-                var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
-                minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
-                console.log("min temperature: " + minFahrenheit + "F");
-                $("#currentWeatherBody").append("Min: " + minFahrenheit + "<br>");
-                
-                //shows today's max temperature
-                var maxKelvin = response.main.temp_max;
-                var maxFahrenheit = (maxKelvin - 273.15) * 1.8000;
-                maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
-                console.log("max temperature: " + maxFahrenheit + "F");
-                $("#currentWeatherBody").append("Max: " + maxFahrenheit + "<br>");
-            });
-        }
-    }).done(function (response) {
-        console.log(response.results[0].geometry.location.lat);
-        console.log(response.results[0].geometry.location.lng);
-        let lat = response.results[0].geometry.location.lat;
-        let lng = response.results[0].geometry.location.lng;
-        myhelper(lat, lng);
-        initMap(lat, lng);
-    })
+            myhelper(lat, lng);
+            initMap(lat, lng);
+        })
+    }
 });
 
 function sunsetFunction(response) {
@@ -192,7 +200,7 @@ function futureWeather(response) {
     const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
     let lat = response.results[0].geometry.location.lat;
     let lng = response.results[0].geometry.location.lng;
-    const futureWeatherURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
+    const futureWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
     
     let todayList = [];
     let tomorrowList = [];
@@ -363,42 +371,42 @@ function futureWeather(response) {
         }
 
         let tomorrowMaxTemp = 0;
-        let tomorrowMinTemp = 0;
+        // let tomorrowMinTemp = 0;
 
         for (let i = 0; i < tomorrowList.length; i++) {
             tomorrowMaxTemp += tomorrowList[i].main.temp_max;
-            tomorrowMinTemp += tomorrowList[i].main.temp_min;
+            // tomorrowMinTemp += tomorrowList[i].main.temp_min;
             if ( (i + 1) === tomorrowList.length) {
                 tomorrowMaxTemp /= tomorrowList.length;
                 let tomorrowMaxF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
                 tomorrowMaxF = Number(Math.round(tomorrowMaxF+'e1')+'e-1');
                 console.log(tomorrowMaxF);
-                $("#tomorrowWeatherBody").append("Max: " + tomorrowMaxF + "F<br>");
-                tomorrowMinTemp /= tomorrowList.length;
-                let tomorrowMinF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
-                tomorrowMinF = Number(Math.round(tomorrowMinF+'e1')+'e-1');
-                console.log(tomorrowMinF);
-                $("#tomorrowWeatherBody").append("Min: " + tomorrowMinF + "F<br>")
+                $("#tomorrowWeatherBody").append("Average Temp: " + tomorrowMaxF + "F<br>");
+                // tomorrowMinTemp /= tomorrowList.length;
+                // let tomorrowMinF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
+                // tomorrowMinF = Number(Math.round(tomorrowMinF+'e1')+'e-1');
+                // console.log(tomorrowMinF);
+                // $("#tomorrowWeatherBody").append("Min: " + tomorrowMinF + "F<br>")
             }
         }
         
         let tomorrowTomorrowMaxTemp = 0;
-        let tomorrowTomorrowMinTemp = 0;
+        // let tomorrowTomorrowMinTemp = 0;
 
         for (let i = 0; i < tomorrowTomorrowList.length; i++) {
             tomorrowTomorrowMaxTemp += tomorrowTomorrowList[i].main.temp_max;
-            tomorrowTomorrowMinTemp += tomorrowTomorrowList[i].main.temp_min;
+            // tomorrowTomorrowMinTemp += tomorrowTomorrowList[i].main.temp_min;
             if ( (i + 1) === tomorrowTomorrowList.length) {
                 tomorrowTomorrowMaxTemp /= tomorrowTomorrowList.length;
                 let tomorrowTomorrowMaxF = (tomorrowTomorrowMaxTemp - 273.15) * 1.80 + 32;
                 tomorrowTomorrowMaxF = Number(Math.round(tomorrowTomorrowMaxF+'e1')+'e-1');
                 console.log(tomorrowTomorrowMaxF);
-                $("#tomorrowTomorrowWeatherBody").append("Max: " + tomorrowTomorrowMaxF + "F<br>");
-                tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
-                let tomorrowTomorrowMinF = (tomorrowTomorrowMinTemp - 273.15) * 1.80 + 32;
-                tomorrowTomorrowMinF = Number(Math.round(tomorrowTomorrowMinF+'e1')+'e-1');
-                console.log(tomorrowTomorrowMinF);
-                $("#tomorrowTomorrowWeatherBody").append("Min: " + tomorrowTomorrowMinF + "F<br>");
+                $("#tomorrowTomorrowWeatherBody").append("Average Temp: " + tomorrowTomorrowMaxF + "F<br>");
+                // tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
+                // let tomorrowTomorrowMinF = (tomorrowTomorrowMinTemp - 273.15) * 1.80 + 32;
+                // tomorrowTomorrowMinF = Number(Math.round(tomorrowTomorrowMinF+'e1')+'e-1');
+                // console.log(tomorrowTomorrowMinF);
+                // $("#tomorrowTomorrowWeatherBody").append("Min: " + tomorrowTomorrowMinF + "F<br>");
             }
         }
 

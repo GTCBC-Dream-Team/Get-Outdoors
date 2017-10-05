@@ -2,31 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+
     <title>Get Outdoors - Your planning guide to adventure</title>
-    
-    <link rel="stylesheet" href="assets/css/reset.css">
-    
+
     <!-- Compiled and minified CSS for materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    
+
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-    
+
     <!--Materialize JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Team Stylesheet-->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!--Moment JS-->
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <!--- google maps callback-->
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&callback=initMap"></script>-->
-    
+
     <!--google.maps.Geocoder-->
 
 </head>
@@ -59,104 +57,110 @@
 </nav>
 
 <main>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+            <h1 class="header center orange-text">Take on the Outdoors</h1>
+            <div class="row center">
+
+                <h5 class="header col s12 light"> All you need when planning your next outdoor outing.</h5>
+            </div>
+            <div class="row center">
+                <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+            </div>
+            <br><br>
+    </div>
+    </div>
     <br>
+
     <div class="container">
-        <div class="section">
+        <div class="section" id="icons">
             <!--   Icon Section   -->
             <div class="row">
-                <div class="col s12 m6 l6">
+                <div class="col s6 m6 l6">
                     <div class="icon-block">
                         <h4 class="center green-text"><i class="medium material-icons">nature_people</i></h4>
                         <h5 class="center">WEATHER</h5>
                     </div>
                 </div>
-                <div class="col s12 m6 l6">
+                <div class="col s6 m6 l6">
                     <div class="icon-block">
-                        <h4 class="center orange-text"><i class="medium material-icons">brightness_4</i></h4>
-                        <h5 class="center">SUNRISE/SUNSET</h5>
+                        <h4 class="center amber-text"><i class="medium material-icons">brightness_4</i></h4>
+                        <h5 class="center">SUNRISE / SUNSET</h5>
                         <!--materalboxed removed from class-->
                     </div>
                 </div>
             </div>
-            
+
             <!--contains slideshow for weather and daylight hours-->
+
             <div class="row">
-                <div class="col s12 12 m12 l12 center-align">
+                <div class="col s12 12 m12 l12 center-align left-side">
                     <div class="slider">
                         <ul class="slides">
                             <li class="sliderList">
                                 <div id="left-side" class="col s6">
-                                    <img src="assets/images/rain.jpg" alt="">
+                                    <img class="slider-fill" src="assets/images/rain.jpg" alt="">
                                     <div class="caption left-align">
                                         <!--<h3 id="currentWeatherHead">Left</h3>-->
-                                        <h5 class="light grey-text text-lighten-3" id="currentWeatherBody">Yep I'm
-                                            on the
-                                            left</h5>
+                                        <h5 class="light grey-text text-lighten-3" id="currentWeatherBody"></h5>
                                     </div>
                                 </div>
                                 <div id="right-side" class="col s6">
-                                    <img src="assets/images/sunriseSet.jpeg">
+                                    <img class="slider-fill" src="assets/images/sunriseSet.jpeg">
                                     <div class="caption right-align">
                                         <!--<h3 id="currentSunsetHead">Right</h3>-->
-                                        <h5 class="light grey-text text-lighten-3" id="currentSunsetBody">And I'm on
-                                            the
-                                            right!</h5>
+                                        <h5 class="light grey-text text-lighten-3" id="currentSunsetBody"></h5>
                                     </div>
                                 </div>
                             </li>
-                            
-                            
+
+
                             <li class="sliderList">
                                 <div id="left-side2" class="col s6">
-                                    <img src="assets/images/rain.jpg" alt="">
+                                    <img class="slider-fill" src="assets/images/rain.jpg" alt="">
                                     <div class="caption left-align">
                                         <!--<h3 id="tomorrowWeatherHead">Left</h3>-->
-                                        <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody">Yep I'm
-                                            on the
-                                            left</h5>
+                                        <h5 class="light grey-text text-lighten-3" id="tomorrowWeatherBody"></h5>
                                     </div>
                                 </div>
                                 <div id="right-side2" class="col s6">
-                                    <img src="assets/images/sunriseSet.jpeg">
+                                    <img class="slider-fill" src="assets/images/sunriseSet.jpeg">
                                     <div class="caption right-align">
                                         <!--<h3 id="tomorrowSunsetHead">Right</h3>-->
-                                        <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody">And I'm
-                                            on the
-                                            right!</h5>
+                                        <h5 class="light grey-text text-lighten-3" id="tomorrowSunsetBody"></h5>
                                     </div>
                                 </div>
                             </li>
-                            
+
                             <li class="sliderList">
                                 <div id="left-side3" class="col s6">
-                                    <img src="assets/images/rain.jpg" alt="">
+                                    <img class="slider-fill" src="assets/images/rain.jpg" alt="">
                                     <div class="caption left-align">
                                         <!--<h3 id="tomorrowTomorrowWeatherHead">Left</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowWeatherBody">
-                                            Yep I'm on
-                                            the left</h5>
+                                            </h5>
                                     </div>
                                 </div>
                                 <div id="right-side3" class="col s6">
-                                    <img src="assets/images/sunriseSet.jpeg">
+                                    <img class="slider-fill" src="assets/images/sunriseSet.jpeg">
                                     <div class="caption right-align">
                                         <!--<h3 id="tomorrowTomorrowSunsetHead">Right</h3>-->
                                         <h5 class="light grey-text text-lighten-3" id="tomorrowTomorrowSunsetBody">
-                                            And I'm on
-                                            the right!</h5>
+                                            </h5>
                                     </div>
                                 </div>
                             </li>
-                        
+
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+
     <br/>
-    
     <div class="container">
         <div class="row">
             <div class="col s12 m6 l12">
@@ -164,6 +168,7 @@
             </div>
         </div>
     </div>
+
 
 
 
@@ -179,10 +184,12 @@
                 <ul>
                     <li><a class="modal-trigger waves-effect waves-light btn lime darken-4" href="#modal2">Nature's Sun
                         Dial</a></li>
-                    <br/>
+                    <br>
                     <li><a class="waves-effect waves-light btn modal-trigger lime darken-4" href="#modal3">Star Dial</a>
                     </li>
                 </ul>
+                <br>
+                <p>Powered by: Open Weather API and Sunrise Sunset API</p>
             </div>
         </div>
     </footer>
@@ -222,6 +229,8 @@
         <p>Return every hour and mark it with a pebble on the ground. Do this until there is no more sunlight left in
             the day. Your sundial will be complete at day’s end. As long as the sun is shining, you can use this simple
             device to tell what time of the day it is.</p>
+        <hr>
+        <p>Source: http://www.wikihow.com/Make-a-Sundial</p>
     </div>
     <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close<i
             class="material-icons right">close</i></a></div>
@@ -259,14 +268,15 @@
             account for Daylight Savings Time (DST), add 1 hour to the calculation in the months that DST is in place at
             your location.</p>
         <br/>
+        <hr>
+        <p>Source: https://www.timeanddate.com/astronomy/tell-time-by-stars.html</p>
     </div>
     <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close<i
             class="material-icons right">close</i></a></div>
 </div>
 
 <script src="assets/js/app.js"></script>
-<!--<script src="assets/js/openWeatherAPI.js"></script>-->
-<!--<script src="assets/js/sunsetAPI.js"></script>-->
+
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI&libraries=places&callback=initMap">
 </script>
