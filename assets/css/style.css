@@ -78,7 +78,7 @@ h5 {
     width: 100vw;
 }
 
-#icons, .slider {
+#icons, .slider, .hiddenHead {
     display: none;
 }
 

@@ -8,11 +8,12 @@
 
     // initMap(33.7489954, -84.3879824);
 
+//on click on large oragne button, focus mouse on location input
 $("#download-button").on("click",function(){
     $("#search").focus();
 });
 
-
+//on document ready, carousel slide, modals, and buttons collapse functions defined in materialize are called.
 $(document).ready(function () {
     // Init Carousel
     $('.carousel').carousel();
@@ -33,6 +34,7 @@ $(document).ready(function () {
     $('.button-collapse').sideNav();
 });
 
+//API keys for google maps ajax calls
 const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
 
 const key = "AIzaSyBWhgudH2tEdR71f3K0SmIUysNLNupoicI";
@@ -41,15 +43,19 @@ function myhelper(lat, lng) {
 
 }
 
+//on click, checks location input for not empty, focuses on slider, reveals hidden divs, and calls google maps api
 $("#submit").on("click", function () {
     event.preventDefault();
     if ($("#search").val() != "") {
+        //changes button text of GET STARTED to NEW LOCATION
         $("#download-button").text("NEW LOCATION");
         let address = $("#search").val();
         const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}`;
+        //displays hidden divs
         $(".slider").css("display", "block");
-        $(".section").css("display", "block");
+        $("#icons").css("display", "block");
         $("#map").css("display", "block");
+        $(".hiddenHead").css("display","block");
         document.getElementById("icons").scrollIntoView();
         $.ajax({
             url: queryURL,
@@ -57,17 +63,16 @@ $("#submit").on("click", function () {
             success: function (response) {
                 let lat = response.results[0].geometry.location.lat;
                 let lng = response.results[0].geometry.location.lng;
+                //calls open weather api using lat and lng from google maps api
                 const currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=" + APIkey;
                 $.ajax({
                     url: currentWeatherURL,
                     method: "GET",
                     success: sunsetFunction(response)
                 }).done(function (response) {
-                    console.log(response);
 
                     //shows current weather state
                     var currentWeatherState = response.weather[0].main;
-                    console.log("current weather state: " + currentWeatherState);
                     $("#currentWeatherHead").html("Today's Weather");
                     $("#currentWeatherBody").html("Today:<br><br>" + currentWeatherState + "<br>");
 
@@ -75,27 +80,22 @@ $("#submit").on("click", function () {
                     var tempKelvin = response.main.temp;
                     var tempFahrenheit = (tempKelvin * 9 / 5) - 459.67;
                     tempFahrenheit = Number(Math.round(tempFahrenheit + 'e1') + 'e-1');
-                    console.log("current temperature: " + tempFahrenheit + "F");
                     $("#currentWeatherBody").append("Current: " + tempFahrenheit + " F<br>");
 
                     //shows today's min temperature
                     var minKelvin = response.main.temp_min;
                     var minFahrenheit = (minKelvin * 9 / 5) - 459.67;
                     minFahrenheit = Number(Math.round(minFahrenheit + 'e1') + 'e-1');
-                    console.log("min temperature: " + minFahrenheit + "F");
                     $("#currentWeatherBody").append("Min: " + minFahrenheit + " F<br>");
 
                     //shows today's max temperature
                     var maxKelvin = response.main.temp_max;
                     var maxFahrenheit = (maxKelvin * 9 / 5) - 459.67;
                     maxFahrenheit = Number(Math.round(maxFahrenheit + 'e1') + 'e-1');
-                    console.log("max temperature: " + maxFahrenheit + "F");
                     $("#currentWeatherBody").append("Max: " + maxFahrenheit + " F<br>");
                 });
             }
         }).done(function (response) {
-            console.log(response.results[0].geometry.location.lat);
-            console.log(response.results[0].geometry.location.lng);
             let lat = response.results[0].geometry.location.lat;
             let lng = response.results[0].geometry.location.lng;
             myhelper(lat, lng);
@@ -104,16 +104,20 @@ $("#submit").on("click", function () {
     }
 });
 
+//grabs sunrise/sunset information from sunrise sunset api and displays on the page
 function sunsetFunction(response) {
     let lat = response.results[0].geometry.location.lat;
     let lng = response.results[0].geometry.location.lng;
 
+    //current time and current day url for api call
     let currentTime = moment().format("YYYY-MM-DD");
     let sunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + currentTime + "&formatted=0";
 
+    //next day and next day url for api call
     let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
     let tomorrowSunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + tomorrowTime + "&formatted=0";
 
+    //next next day and next next day url for api call
     let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
     let tomorrowTomorrowSunsetURL = "https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + tomorrowTomorrowTime + "&formatted=0";
 
@@ -123,7 +127,6 @@ function sunsetFunction(response) {
         method: "GET",
         success: futureWeather(response)
     }).done(function (response) {
-        console.log(response);
         
         $("#currentSunsetHead").text("Today's Sun Data");
         
@@ -148,7 +151,6 @@ function sunsetFunction(response) {
         url: tomorrowSunsetURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
         $("#tomorrowSunsetHead").text("Tomorrow's Sun Data");
 
         let tomorrowSunrise = response.results.sunrise;
@@ -172,7 +174,6 @@ function sunsetFunction(response) {
         url: tomorrowTomorrowSunsetURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
 
         $("#tomorrowTomorrowSunsetHead").text("The Next Day's Sun Data");
 
@@ -192,9 +193,11 @@ function sunsetFunction(response) {
         $("#tomorrowTomorrowSunsetBody").append("Day length: " + tomorrowTomorrowDaylength + " hours<br>");
 
     });
+    //empties location search input
     $("#search").val("");
 }
 
+//ajax call to open weather forecast api
 function futureWeather(response) {
     
     const APIkey = "d4cbbbed2b7e0999d4caf0c5d818ffe4";
@@ -210,39 +213,28 @@ function futureWeather(response) {
         url: futureWeatherURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
+
+        //variables for today, tomorrow, and the next day's time
         let momentOffset = moment();
-        console.log(momentOffset);
         let currentTime = moment().format("YYYY-MM-DD");
-        console.log(currentTime + "current time");
         let tomorrowTime = moment().add(1, "days").format("YYYY-MM-DD");
-        console.log(tomorrowTime + "tomorrow time");
         let tomorrowTomorrowTime = moment().add(2, "days").format("YYYY-MM-DD");
-        console.log(tomorrowTomorrowTime + "tomorrow Tomorrow time");
         
         let weatherList = response.list;
-        
-        console.log(weatherList);
-        
+
+        //pushes weather items into arrays based on which day they fall into
         for (let i = 0; i < weatherList.length; i++) {
             let weatherDay = weatherList[i].dt_txt;
             weatherDay = moment(weatherDay).format("YYYY-MM-DD");
-            console.log(weatherDay);
             if (weatherDay === currentTime) {
                 todayList.push(weatherList[i]);
-                console.log("todayList");
             } else if (weatherDay === tomorrowTime) {
                 tomorrowList.push(weatherList[i]);
-                console.log("tomorrowList");
             } else if (weatherDay === tomorrowTomorrowTime) {
                 tomorrowTomorrowList.push(weatherList[i]);
-                console.log("tomorrowTomorrowList");
             }
-            console.log(todayList);
-            console.log(tomorrowList);
-            console.log(tomorrowTomorrowList);
         }
-        //we will iterate through todayList, tomorrowList, and tomorrowTomorrowList, looking for weather states and sorting them into new weather state arrays by day still
+
         
         var clearState = "Clear";
         var rainState = "Rain";
@@ -251,8 +243,8 @@ function futureWeather(response) {
         var todayClear = [];
         var todayRain = [];
         var todayClouds = [];
-        
-        console.log("outside the todayList loop");
+
+        //sorts today's array by weather state
         for (i = 0; i < todayList.length; i++) {
             var weatherState = todayList[i].weather[0].main;
             
@@ -264,16 +256,13 @@ function futureWeather(response) {
                 todayClouds.push(todayList[i]);
             }
         }
-        console.log(todayClear);
-        console.log(todayRain);
-        console.log(todayClouds);
-        
+
         //we'll repeat this process for the other days as well
         var tomorrowClear = [];
         var tomorrowRain = [];
         var tomorrowClouds = [];
 
-        console.log("outside the tomorrowList loop");
+        //sorts tomorrow's array by weather state
         for (i = 0; i < tomorrowList.length; i++) {
             weatherState = tomorrowList[i].weather[0].main;
             
@@ -285,16 +274,13 @@ function futureWeather(response) {
                 tomorrowClouds.push(tomorrowList[i]);
             }
         }
-        console.log(tomorrowClear);
-        console.log(tomorrowRain);
-        console.log(tomorrowClouds);
         
         //tomorrowTomorrowList
         var tomorrowTomorrowClear = [];
         var tomorrowTomorrowRain = [];
         var tomorrowTomorrowClouds = [];
 
-        console.log("outside the tomorrowTomorrowList loop");
+        //sorts tomorrow tomorrow's array by weather state
         for (i = 0; i < tomorrowTomorrowList.length; i++) {
             weatherState = tomorrowTomorrowList[i].weather[0].main;
             
@@ -306,73 +292,60 @@ function futureWeather(response) {
                 tomorrowTomorrowClouds.push(tomorrowTomorrowList[i]);
             }
         }
-        console.log(tomorrowTomorrowClear);
-        console.log(tomorrowTomorrowRain);
-        console.log(tomorrowTomorrowClouds);
 
         //then we'll check the length of each weather state array and declare the longest array as the day's forecast
         //I haven't figured out what to do if they're the same yet
-        
+
+        //checks to see which weather state is most common today for display in a later update
         if (todayClear.length > todayRain.length && todayClear.length > todayClouds.length) {
-            console.log("the average weather is clear");
         }
         else if (todayRain.length > todayClear && todayRain.length > todayClouds.length) {
-            console.log("the average weather is rainy");
         }
         else {
-            console.log("the average weather is cloudy");
         }
 
-        //tomorrowList
+        //checks to see which weather state is most common tomorrow
         if (tomorrowClear.length > tomorrowRain.length && tomorrowClear.length > tomorrowClouds.length) {
-            console.log("the average weather is clear");
             $("#tomorrowWeatherBody").html("Tomorrow:<br><br>Clear<br>");
         }
         else if (tomorrowRain.length > tomorrowClear && tomorrowRain.length > tomorrowClouds.length) {
-            console.log("the average weather is rainy");
             $("#tomorrowWeatherBody").html("Tomorrow:<br><br>Rain<br>");
         }
         else {
-            console.log("the average weather is cloudy");
             $("#tomorrowWeatherBody").html("Tomorrow:<br><br>Clouds<br>");
         }
 
-        //tomorrowTomorrowList
+        //checks to see which weather state is most common tomorrow tomorrow
         if (tomorrowTomorrowClear.length > tomorrowTomorrowRain.length && tomorrowTomorrowClear.length > tomorrowTomorrowClouds.length) {
-            console.log("the average weather is clear");
             $("#tomorrowTomorrowWeatherBody").html("The Next Day:<br><br>Clear<br>");
         }
         else if (tomorrowTomorrowRain.length > tomorrowTomorrowClear && tomorrowTomorrowRain.length > tomorrowTomorrowClouds.length) {
-            console.log("the average weather is rainy");
             $("#tomorrowTomorrowWeatherBody").html("The Next Day:<br><br>Rain<br>");
         }
         else {
-            console.log("the average weather is cloudy");
             $("#tomorrowTomorrowWeatherBody").html("The Next Day:<br><br>Clouds<br>");
         }
 
-        //we also want to get the average high and low temperatures for the day
-        //so we'll iterate through each day's list, add the max temps, add the min temps, and divide each temp by the array length
         
         let todayMaxTemp = 0;
         let todayMinTemp = 0;
-        
+
+        //calculates the average max and min temperatures for today to be used in a later update
         for (let i = 0; i < todayList.length; i++) {
             todayMaxTemp += todayList[i].main.temp_max;
             todayMinTemp += todayList[i].main.temp_min;
             if ( (i + 1) === todayList.length) {
                 todayMaxTemp /= todayList.length;
                 let todayMaxF = (todayMaxTemp - 273.15) * 1.80 + 32;
-                console.log(todayMaxF);
                 todayMinTemp /= todayList.length;
                 let todayMinF = (todayMinTemp - 273.15) * 1.80 + 32;
-                console.log(todayMinF);
             }
         }
 
         let tomorrowMaxTemp = 0;
         // let tomorrowMinTemp = 0;
 
+        //calculates tomorrow's max and min states for a later update, currently uses the average max temp for the average overall
         for (let i = 0; i < tomorrowList.length; i++) {
             tomorrowMaxTemp += tomorrowList[i].main.temp_max;
             // tomorrowMinTemp += tomorrowList[i].main.temp_min;
@@ -380,7 +353,6 @@ function futureWeather(response) {
                 tomorrowMaxTemp /= tomorrowList.length;
                 let tomorrowMaxF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
                 tomorrowMaxF = Number(Math.round(tomorrowMaxF+'e1')+'e-1');
-                console.log(tomorrowMaxF);
                 $("#tomorrowWeatherBody").append("Average Temp: " + tomorrowMaxF + " F<br>");
                 // tomorrowMinTemp /= tomorrowList.length;
                 // let tomorrowMinF = (tomorrowMaxTemp - 273.15) * 1.80 + 32;
@@ -393,6 +365,7 @@ function futureWeather(response) {
         let tomorrowTomorrowMaxTemp = 0;
         // let tomorrowTomorrowMinTemp = 0;
 
+        //calculates tomorrow tomorrow's max and min states for a later update, currently uses the average max temp for the average overall
         for (let i = 0; i < tomorrowTomorrowList.length; i++) {
             tomorrowTomorrowMaxTemp += tomorrowTomorrowList[i].main.temp_max;
             // tomorrowTomorrowMinTemp += tomorrowTomorrowList[i].main.temp_min;
@@ -400,7 +373,6 @@ function futureWeather(response) {
                 tomorrowTomorrowMaxTemp /= tomorrowTomorrowList.length;
                 let tomorrowTomorrowMaxF = (tomorrowTomorrowMaxTemp - 273.15) * 1.80 + 32;
                 tomorrowTomorrowMaxF = Number(Math.round(tomorrowTomorrowMaxF+'e1')+'e-1');
-                console.log(tomorrowTomorrowMaxF);
                 $("#tomorrowTomorrowWeatherBody").append("Average Temp: " + tomorrowTomorrowMaxF + " F<br>");
                 // tomorrowTomorrowMinTemp /= tomorrowTomorrowList.length;
                 // let tomorrowTomorrowMinF = (tomorrowTomorrowMinTemp - 273.15) * 1.80 + 32;
@@ -427,6 +399,7 @@ let map;
 let service;
 let infowindow;
 
+//zooms on google map based on location input, shows places data for "trail"
 function initMap(lat, lng) {
     let location = new google.maps.LatLng(lat, lng);
     
@@ -444,6 +417,7 @@ function initMap(lat, lng) {
     service.textSearch(request, callback);
 }
 
+//function for google places
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
@@ -453,6 +427,7 @@ function callback(results, status) {
     }
 }
 
+//fucntions for google places
 function createMarker(place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
